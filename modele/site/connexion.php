@@ -1,28 +1,9 @@
 <?php
 session_start();
 include("../connexion_bdd.php");
-
-  if(isset($_SESSION['utilisateur']) && $_SESSION['motDePasse'])
-
-{
-
-
-
-
-
-    echo "deja co";
-
-  
-
-
-
-  
-
-  }
-
-  
-
-  elseif (isset($_POST['utilisateur']) AND $_POST['utilisateur']!="" AND isset($_POST['motDePasse']) AND $_POST['motDePasse']!="")  
+if(isset($_SESSION['id']) && $_SESSION['id']>0)
+{    echo "deja co";   }
+elseif (isset($_POST['utilisateur']) AND $_POST['utilisateur']!="" AND isset($_POST['motDePasse']) AND $_POST['motDePasse']!="")  
 
 
 
@@ -34,13 +15,16 @@ include("../connexion_bdd.php");
 
 
 
-      $req=$bdd->query("SELECT motDePasse FROM t_membres WHERE email='$mail'");
+      $req=$bdd->query("SELECT * FROM t_membres WHERE email='$mail'");
 
     while( $donnees= $req->fetch())
 
      {
 
        $passhash=$donnees['motDePasse'];
+	   $id = $donnees['id'];
+	   $prenom = $donnees['firstname'];
+	   $nom = $donnees['name'];
 
       }
 
@@ -75,6 +59,9 @@ include("../connexion_bdd.php");
 
 
          $_SESSION['utilisateur']=$_POST['utilisateur'];
+		 $_SESSION['id'] = $id;
+		 $_SESSION['prenom'] = $prenom;
+		 $_SESSION['nom'] = $nom;
 
          $_SESSION['motDePasse']=$passhash;
 
