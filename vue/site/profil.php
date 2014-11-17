@@ -15,6 +15,8 @@
 </form>
 
 
+<<<<<<< HEAD
+=======
 <?php for ($k=0;$k<sizeof($match);$k++)
 {
 $req3=$bdd->query("SELECT * FROM t_membres WHERE id = '$match[$k]'");
@@ -27,6 +29,7 @@ $req3=$bdd->query("SELECT * FROM t_membres WHERE id = '$match[$k]'");
 	  echo $prenom . " " . $nom . "<br/>";
 }
 ?>
+>>>>>>> 5481b1ed9cc8e1997a1fe672ba6ea4522914588a
 
 <?php include("includes/footer.php"); ?>
       
