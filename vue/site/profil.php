@@ -15,8 +15,7 @@
 </form>
 
 
-<<<<<<< HEAD
-=======
+
 <?php for ($k=0;$k<sizeof($match);$k++)
 {
 $req3=$bdd->query("SELECT * FROM t_membres WHERE id = '$match[$k]'");
@@ -26,10 +25,17 @@ $req3=$bdd->query("SELECT * FROM t_membres WHERE id = '$match[$k]'");
        $prenom = $donnees['firstname'];
 	   $nom = $donnees['name'];
       } 
-	  echo $prenom . " " . $nom . "<br/>";
+	  echo "<b>" . $prenom . " " . $nom . "</b><br/>";
 }
 ?>
->>>>>>> 5481b1ed9cc8e1997a1fe672ba6ea4522914588a
+
+<form method="post" action="modele/site/chat.php">
+<input type="text" name="chat">
+<input type="text" name="id">
+<input type="submit" name="text" value="Send">
+		</form>
+
+
 
 <?php include("includes/footer.php"); ?>
       
