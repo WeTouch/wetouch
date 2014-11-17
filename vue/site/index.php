@@ -85,6 +85,49 @@ include("includes/header.php");
               </div>
             </form>
 
+
+           <div class="container">
+        
+            
+            <a href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal">Click to open Modal</a>
+        </div>
+      
+
+
+
+
+      <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+            <h2>Connexion ou <a href="register.php">Inscription</a></h2>
+          </div>
+          <div class="modal-body">
+          <form class="login-form" method="post" >
+            <div class="form-group group">
+              <label for="log-email">Email</label>
+              <input type="email" class="form-control" name="log-mail" id="log-email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group group">
+              <label for="log-password">Mot de passe</label>
+              <input type="password" class="form-control" name="log-pass" id="log-pass" placeholder="Enter your password" required>
+              <a class="help-link" href="#">Mot de passe oublié ?</a>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" name="remember"> Rester connecté</label>
+            </div>
+           <input class="btn btn-success" type="submit" onclick="submitlogin()" value="Connexion"> <div id="erreurco"></div>
+          </form>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+   
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="vue/site/assets/js/bootstrap.min.js"></script>
+
       </div>
 <?php 
 //Inclusion du footer

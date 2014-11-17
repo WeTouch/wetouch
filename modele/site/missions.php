@@ -11,6 +11,7 @@ $req=$bdd->query("SELECT vote FROM t_result WHERE result=1 AND voter='$id'" );
 	  
 
 $req2=$bdd->query("SELECT voter FROM t_result WHERE result=1 AND vote='$id'");
+<<<<<<< HEAD
 
     while( $donnees= $req2->fetch())
 
@@ -62,6 +63,28 @@ echo $msg . '<form method="post" action="modele/site/missions.php">
 	  
 
 }
+=======
+
+    while( $donnees= $req2->fetch())
+
+     {
+       $zboub2[] =  $donnees['voter'];
+      }
+
+
+for ($i=0;$i<sizeof($zboub);$i++)
+{
+for ($j=0;$j<sizeof($zboub2);$j++)
+{
+if ($zboub[$i]==$zboub2[$j])
+{
+$match[] =  $zboub[$i];
+}
+}
+}
+
+var_dump($match);
+>>>>>>> 5481b1ed9cc8e1997a1fe672ba6ea4522914588a
 
 
 ?>
