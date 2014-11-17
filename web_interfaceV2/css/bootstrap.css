@@ -5117,8 +5117,9 @@ button.close {
   margin: 10px;
 }
 .modal-content {
-  position: relative;
-  background-color: #fff;
+  margin: 0 auto;
+  width: 700px;
+  background-color: rgba(110, 110, 110, 0.4);
   background-clip: padding-box;
   border: 1px solid #999;
   border: 1px solid rgba(0, 0, 0, .2);
