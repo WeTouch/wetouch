@@ -44,11 +44,11 @@ if( isset($_POST['chat']) && isset($_POST['id']) ) // si formulaire soumis
 
     $reponse = $req->execute(array(
 
-      'id1' => '$id',
+      'id1' => $id,
 
-      'id2' => '$idPost',
+      'id2' => $idPost,
 
-      'msg' => '$id' . $_POST['chat']
+      'msg' => $id . ':' . $_POST['chat']
 
 
       ));
