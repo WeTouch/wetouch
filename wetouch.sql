@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 10 Novembre 2014 à 10:37
+-- Généré le :  Lun 17 Novembre 2014 à 09:05
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -27,11 +27,20 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `t_chat` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_user1` int(11) NOT NULL,
   `id_user2` int(11) NOT NULL,
   `msg` mediumtext NOT NULL,
-  PRIMARY KEY (`id_user1`,`id_user2`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `t_chat`
+--
+
+INSERT INTO `t_chat` (`id`, `id_user1`, `id_user2`, `msg`) VALUES
+(1, 6, 2, 'Salut ! \r\n<br/><br/>\r\n\r\nCava ?\r\n<br/><br/>\r\n\r\nOui et toi ?'),
+(2, 6, 5, 'Plan cul?\r\n<br/><br/>\r\nNon');
 
 -- --------------------------------------------------------
 
@@ -53,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `t_membres` (
   `motDePasse` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `ix_photo` (`photo_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Contenu de la table `t_membres`
@@ -65,7 +74,9 @@ INSERT INTO `t_membres` (`id`, `email`, `firstname`, `name`, `dob`, `position`, 
 (3, 'damien.bellet@y-nov.com', 'Damien', 'Bellet', '1995-06-20', '', NULL, 'Monsieur', '', '0', '$2y$11$pwvgZilMTVpKxRJKbKSPoeleBEAwV70wkk0i9qH0oVLmECC89ZTEa'),
 (4, 'damien.bellet@y-nov.com', 'Damien', 'Bellet', '1995-06-20', '', NULL, 'Monsieur', '', '0', '$2y$11$kkx4/.HlRW3vRBYYn25WyeyzIijU8cipoQpZfXAAnxkQdHsGdBo5G'),
 (5, 'zboub@zboub.com', 'Michel', 'Zboub', '1997-12-13', '', NULL, 'Monsieur', '', '0', '$2y$11$YuyLn6DD67ZcVGrGRU7vQ.CfP5fMRqXtJ5fxuRNEZ9dEPKrqjSU4a'),
-(6, 'jules.duvivier@y-nov.com', 'admin', 'admin', '1997-01-13', '', NULL, 'Mademoiselle', '', '6/1.jpg', '$2y$11$oMceR6Wb695H8aub4FTqAuuHyd4lW5fkrfcfULJX0z5N5aTjQTLfy');
+(8, 'zb@zb.fr', 'du', 'Du', '1955-01-13', '', NULL, 'Monsieur', '', '', '$2y$11$ZPnDAUc0PlWkpxioZuEPQ.ym.IsX/iNsB.igpOtDPnWFHU68feMNW'),
+(7, 'aze@aze.fr', 'aze', 'aze', '0004-05-04', '', NULL, 'Monsieur', '', '', '$2y$11$JBxFHn7UPfvDfRKowGVNd.FRfVcpNaBpqWEJsYBQJtTWmMq6y9dl.'),
+(6, 'jules.jules@jules.fr', 'a', 'a', '0123-12-13', '', NULL, 'Monsieur', '', '', '$2y$11$wPYk29VSyKi7f5zUFzI0XuDhKzRvnQhAYUeDN4iEt.z5Zm8APtxB6');
 
 -- --------------------------------------------------------
 
@@ -102,6 +113,20 @@ CREATE TABLE IF NOT EXISTS `t_result` (
   KEY `vote` (`vote`),
   KEY `voter` (`voter`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `t_result`
+--
+
+INSERT INTO `t_result` (`voter`, `vote`, `result`) VALUES
+(6, 1, 0),
+(6, 2, 1),
+(6, 3, 1),
+(6, 4, 0),
+(6, 5, 1),
+(2, 6, 1),
+(1, 6, 1),
+(5, 6, 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

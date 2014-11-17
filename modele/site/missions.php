@@ -1,84 +1,67 @@
 <?php
-function set_mission($param)
+
+$id = $_SESSION['id'];
+$req=$bdd->query("SELECT vote FROM t_result WHERE result=1 AND voter='$id'" );
+
+    while( $donnees= $req->fetch())
+
+     {
+       $zboub[] =  $donnees['vote'];
+      }
+	  
+
+$req2=$bdd->query("SELECT voter FROM t_result WHERE result=1 AND vote='$id'");
+
+    while( $donnees= $req2->fetch())
+
+     {
+       $zboub2[] =  $donnees['voter'];
+      }
+
+
+for ($i=0;$i<sizeof($zboub);$i++)
 {
-    global $bdd;
-            
-    $req = $bdd->prepare('INSERT INTO missions (id_utilisateur,titre,lieu,description) VALUES(?, ?, ?, ?)');
-    $req->execute(array($param['id_utilisateur'],$param['titre'],$param['lieu'],$param['description']));
-    
-    return $bdd->lastInsertId();
+for ($j=0;$j<sizeof($zboub2);$j++)
+{
+if ($zboub[$i]==$zboub2[$j])
+{
+$match[] =  $zboub[$i];
+}
+}
 }
 
-function update_mission($param)
+
+
+for ($k=0;$k<sizeof($match);$k++)
 {
-    global $bdd;
-    
-        
-    $req = $bdd->prepare('UPDATE missions SET titre=:titre,lieu=:lieu,description=:description WHERE id=:id');
-    $req->execute(array(
-    	'titre' => $param['titre'], 
-    	'lieu' => $param['lieu'], 
-    	'description' => $param['description'],
-    	'id' => $param['id']
-    	));
-    
-    return $bdd->lastInsertId();
+
+$req3=$bdd->query("SELECT * FROM t_membres WHERE id = '$match[$k]'");
+
+    while( $donnees= $req3->fetch())
+
+     {
+       $prenom = $donnees['firstname'];
+	   $nom = $donnees['name'];
+      } 
+	  echo '<li>' . $prenom . ' ' . $nom . '</li>';
+	  
+$req4=$bdd->query("SELECT msg FROM t_chat WHERE (id_user1 = '$id' OR id_user1 = '$match[$k]') AND ( id_user2  = '$id' OR id_user2 = '$match[$k]' )");
+
+
+    while($donnees = $req4->fetch())
+     {
+       $msg = $donnees['msg'];	    
+     }
+echo $msg . '<form method="post" action="modele/site/missions.php">
+<input type="text">
+<input type="submit" name="text" value="Send">
+		</form>';	
+
+
+
+	  
+
 }
 
-function get_mission($param)
-{
-    global $bdd;
-    
-    $limit = (int) 1;
-        
-    $req = $bdd->prepare('SELECT * FROM missions WHERE id=:id LIMIT :limit');
-    $req->bindParam(':id', $param['id'], PDO::PARAM_INT);
-    $req->bindParam(':limit', $limit, PDO::PARAM_INT);
-    $req->execute();
-    $mission = $req->fetch(); 
-    
-    return $mission;
-}
 
-function delete_mission($param)
-{
-    global $bdd;
-        
-    $req = $bdd->prepare('DELETE FROM missions WHERE id=:id');
-    $req->bindParam(':id', $param['id'], PDO::PARAM_INT);
-    $req->execute();
-    $mission = $req->fetch(); 
-    
-    return $mission;
-}
-
-function get_missionsByUser($param,$offset, $limit)
-{
-    global $bdd;
-    $offset = (int) $offset;
-    $limit = (int) $limit;
-        
-    $req = $bdd->prepare('SELECT * FROM missions WHERE id_utilisateur=:id_utilisateur ORDER BY id DESC LIMIT :offset, :limit');
-    $req->bindParam(':offset', $offset, PDO::PARAM_INT);
-    $req->bindParam(':limit', $limit, PDO::PARAM_INT);
-    $req->bindParam(':id_utilisateur', $param['id_utilisateur'], PDO::PARAM_INT);
-    $req->execute();
-    $missions = $req->fetchAll();
-    
-    return $missions;
-}
-
-function get_missions($offset, $limit)
-{
-    global $bdd;
-    $offset = (int) $offset;
-    $limit = (int) $limit;
-        
-    $req = $bdd->prepare('SELECT * FROM missions ORDER BY id DESC LIMIT :offset, :limit');
-    $req->bindParam(':offset', $offset, PDO::PARAM_INT);
-    $req->bindParam(':limit', $limit, PDO::PARAM_INT);
-    $req->execute();
-    $missions = $req->fetchAll();
-    
-    return $missions;
-}
+?>
