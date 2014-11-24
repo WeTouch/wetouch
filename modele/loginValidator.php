@@ -1,7 +1,6 @@
 <?php
 require 'class/bdd.php';
 
-
 if(!empty($_POST)){
   $email = $_POST['email'];
   $password = ($_POST['password']);
@@ -12,11 +11,12 @@ if(!empty($_POST)){
   $count = $req->rowCount($sql);
   if($count == 1){
     $_SESSION['connexion'] = 1;
-    header('Location:perso.php');
+    $_SESSION['name'] = $email;
+    header('Location:/wetouch');die;
   }
   else{
     //Si utilisateur inconnu
-    $error_unknown = 'Utilisateur inexistant !';
+    header('Location:/wetouch/login');die;
   }
 
 }

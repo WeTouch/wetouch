@@ -33,12 +33,18 @@ $app->get('/login',function() use ($app){
 
 })->name('login');
 
+
 $app->post('/login',function() use ($app)
 {
   $app->render('../modele/loginValidator.php');
-})->name('loginValidator');
+});
 
+$app->get('/logout',function() use ($app){
+  $app->render('../modele/logout.php');
+
+})->name('logout');
 //exec
+session_start();
 $app->render('header.php', compact('app'));
 $app->run();
 $app->render('footer.php', compact('app'));
