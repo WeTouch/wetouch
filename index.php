@@ -1,17 +1,45 @@
 <?php
-//Autorisation des Sessions
-session_start();
-//Connexion à la base de données
-include_once('modele/connexion_bdd.php');
 
-/*
-Tout le site passe par l'index, le changement de pages passe par des variables $_GET['section']
-Si il n'y a rien on fait appel au controleur de l'index sinon au controleur correspondant à la 
-variable $_GET
-*/
-if (!isset($_GET['section']) OR $_GET['section'] == 'index')
+//Require
+require 'class/Slim/Slim.php';
+require 'class/test.php';
+require 'class/bdd.php';
+
+\Slim\Slim::registerAutoloader();
+
+
+//chargement slim
+$app = new \Slim\Slim(
+[
+  'templates.path' => 'view'
+]
+);
+
+$app->test= new Test();
+
+// routes
+$app->get('/',function() use ($app){
+  $app->render('homepage.php');
+
+});
+
+$app->get('/contact',function() use ($app){
+  $app->render('contact.php');
+
+})->name('contact');
+
+$app->get('/login',function() use ($app){
+  $app->render('login.php');
+
+})->name('login');
+
+$app->post('/login',function() use ($app)
 {
-    include_once('controleur/site/index.php');
-}else{
-	include_once('controleur/site/'.$_GET['section'].'.php');
-}
+  $app->render('../modele/loginValidator.php');
+})->name('loginValidator');
+
+//exec
+$app->render('header.php', compact('app'));
+$app->run();
+$app->render('footer.php', compact('app'));
+?>
