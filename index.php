@@ -6,6 +6,7 @@ require 'class/test.php';
 require 'class/bdd.php';
 require 'modele/loginValidator.php';
 require 'modele/SignInValidator.php';
+require 'modele/logout.php';
 session_start();
 \Slim\Slim::registerAutoloader();
 
@@ -44,8 +45,8 @@ $app = new \Slim\Slim([
 
 
   $app->get('/logout',function() use ($app){
-    $app->render('../modele/logout.php');
-
+    logout::function_logout();
+    header('Location:/wetouch/login');die;
   })->name('logout');
 
 

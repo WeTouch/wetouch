@@ -12,5 +12,5 @@ if ((isset ($_SESSION['connexion'])) && ($_SESSION['connexion']==1))
   <title>site</title>
   Ceci est un header
   <a href="<?php echo $app->urlFor('logout');?>">logout</a>
-  <a href="<?php echo $app->urlFor('signin');?>">signin</a>
+
 </header>

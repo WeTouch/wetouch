@@ -9,4 +9,4 @@
 
   <input type="submit" value="Se connecter"/>
 </form><br/>
-<a href="inscription.php">Vous n'avez pas de compte ?</a><br/>
+<a href="<?php echo $app->urlFor('signin');?>">Vous n'avez pas de compte ?</a><br/>

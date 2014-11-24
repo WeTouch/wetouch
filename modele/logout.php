@@ -1,5 +1,11 @@
 <?php
-$_SESSION = array();
-session_destroy();
-header('Location:/wetouch');die;
+
+class logout
+{
+  static function function_logout()
+  {
+    $_SESSION = array();
+    session_destroy();
+  }
+}
 ?>
