@@ -2,7 +2,7 @@
 
 
 try {
-  $cnx =new PDO ('mysql:host=localhost; dbname=wetouch', 'root', '');
+  $cnx =new PDO ('mysql:host=localhost; dbname=wetouch', 'root', 'root');
 }
 catch(PDOException $e)
 {

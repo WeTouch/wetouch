@@ -7,6 +7,7 @@ require 'class/bdd.php';
 require 'modele/loginValidator.php';
 require 'modele/SignInValidator.php';
 require 'modele/logout.php';
+require 'modele/Match.php';
 session_start();
 \Slim\Slim::registerAutoloader();
 
@@ -64,10 +65,22 @@ $app = new \Slim\Slim([
       header('Location:/wetouch/signin');die;
     }
 
+
   });
   //exec
+
+
+  $app->get('/tind',function() use ($app){
+  $is_match = new Match();
+  $is_match->getMatch();
+  $app->render('tind.php');
+  $is_match->displayMatch();
+  })->name('tind');
+
+
 
   $app->render('header.php', compact('app'));
   $app->run();
   $app->render('footer.php', compact('app'));
+
   ?>
