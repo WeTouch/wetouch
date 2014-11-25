@@ -8,6 +8,7 @@ require 'modele/loginValidator.php';
 require 'modele/SignInValidator.php';
 require 'modele/logout.php';
 require 'modele/Match.php';
+require 'modele/chat.php';
 require 'modele/FindPicture.php';
 session_start();
 \Slim\Slim::registerAutoloader();
@@ -85,8 +86,15 @@ $app = new \Slim\Slim([
   $is_match->getMatch();
   $app->render('tind.php');
   $is_match->displayMatch();
-  })->name('tind');
+})->name('match');
 
+$app->get('/chat',function() use ($app){
+  $match = new chat();
+  $match->getTalker();
+
+  $app->render('chat.php');
+  $match->displayMatchForChat();
+})->name('chat');
 
 
   $app->render('header.php', compact('app'));

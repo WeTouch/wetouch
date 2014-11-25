@@ -14,7 +14,7 @@
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
-    <![endif]-->       
+    <![endif]-->
     <link rel="shortcut icon" href="images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
@@ -38,8 +38,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="<?php echo $app->urlFor('index');?>"><?php echo $_SESSION["firstname"]." ".$_SESSION["name"] ?></a></li>
                     <li><a href="<?php echo $app->urlFor('pictures');?>">pictures</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="<?php echo $app->urlFor('match');?>">Match</a></li>
+                    <li><a href="<?php echo $app->urlFor('chat');?>">Chat</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="icon-angle-down"></i></a>
                         <ul class="dropdown-menu">
@@ -53,7 +53,7 @@
                             <li><a href="terms.html">Terms of Use</a></li>
                         </ul>
                     </li>
-                    <li><a href="blog.html">Blog</a></li> 
+                    <li><a href="blog.html">Blog</a></li>
                     <li><a href="<?php echo $app->urlFor('logout');?>">log out</a></li>
                 </ul>
             </div> <?php }?>
