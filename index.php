@@ -21,7 +21,11 @@ $app = new \Slim\Slim([
 
   // routes
   $app->get('/',function() use ($app){
-    $app->render('homepage.php');
+    if(!isset($_SESSION['id']))
+    {
+      $app->render('login.php');
+      $app->render('signin.php');
+    }
   });
 
   $app->get('/contact',function() use ($app){
@@ -47,7 +51,7 @@ $app = new \Slim\Slim([
 
   $app->get('/logout',function() use ($app){
     logout::function_logout();
-    header('Location:/wetouch/login');die;
+    header('Location:/wetouch/');die;
   })->name('logout');
 
 

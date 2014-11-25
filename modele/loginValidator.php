@@ -8,7 +8,7 @@ class loginValidator {
     require 'class/bdd.php';
     if(!empty($_POST)){
       $tab = array('email'=>$email, 'password'=>$password);
-      $sql = 'SELECT email,password,id FROM t_membres WHERE email = :email AND password = :password';
+      $sql = 'SELECT email,password,id,firstname,name FROM t_membres WHERE email = :email AND password = :password';
       $req = $cnx->prepare($sql);
       $req->execute($tab);
 
@@ -16,8 +16,10 @@ class loginValidator {
       $count = $req->rowCount($sql);
       if($count == 1){
         $_SESSION['connexion'] = 1;
-        $_SESSION['name'] = $email;
+        $_SESSION['email'] = $email;
         $_SESSION['id'] = $idrep['id'];
+        $_SESSION['name'] = $idrep['name'];
+        $_SESSION['firstname'] = $idrep['firstname'];
         return True;
       }
       else{
