@@ -64,8 +64,6 @@ $app = new \Slim\Slim([
     else{
       header('Location:/wetouch/signin');die;
     }
-
-
   });
   //exec
 
