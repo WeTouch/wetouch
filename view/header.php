@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | Flat Theme</title>
+    <title>We Touch</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -36,8 +36,8 @@
             <?php if(isset($_SESSION["id"])){ ?>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="index.html"><?php echo $_SESSION["firstname"]." ".$_SESSION["name"] ?></a></li>
-                    <li><a href="about-us.html">My pictures</a></li>
+                    <li class="active"><a href="<?php echo $app->urlFor('index');?>"><?php echo $_SESSION["firstname"]." ".$_SESSION["name"] ?></a></li>
+                    <li><a href="<?php echo $app->urlFor('pictures');?>">pictures</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li class="dropdown">

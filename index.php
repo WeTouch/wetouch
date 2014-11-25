@@ -8,6 +8,7 @@ require 'modele/loginValidator.php';
 require 'modele/SignInValidator.php';
 require 'modele/logout.php';
 require 'modele/Match.php';
+require 'modele/FindPicture.php';
 session_start();
 \Slim\Slim::registerAutoloader();
 
@@ -26,7 +27,7 @@ $app = new \Slim\Slim([
       $app->render('login.php');
       $app->render('signin.php');
     }
-  });
+  })->name('index');
 
   $app->get('/contact',function() use ($app){
     $app->render('contact.php');
@@ -47,6 +48,13 @@ $app = new \Slim\Slim([
       header('Location:/wetouch/login');die;
     }
   });
+
+  $app->get('/mypictures',function() use ($app){
+    $mypictures = new FindPicture();
+    $tabPicture=array();
+    $tabPicture=$mypictures->getPicture();
+    $app->render('mypictures.php');
+  })->name('pictures');
 
 
   $app->get('/logout',function() use ($app){
