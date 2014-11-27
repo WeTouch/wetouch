@@ -63,6 +63,7 @@ class Chat{
 
       echo '
       <form method="post" action="#">
+      <input type="text" name="id" value=' . $key . ' style="width:20px; display:none;">
       <input type="text" name="message"/>
       <input type="submit" value="Envoyer"/>
       </form>';

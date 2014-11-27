@@ -9,6 +9,7 @@ require 'modele/SignInValidator.php';
 require 'modele/logout.php';
 require 'modele/Match.php';
 require 'modele/chat.php';
+require 'modele/chatValidator.php';
 require 'modele/FindPicture.php';
 session_start();
 \Slim\Slim::registerAutoloader();
@@ -95,6 +96,13 @@ $app->get('/chat',function() use ($app){
   $app->render('chat.php');
   $match->displayMatchForChat();
 })->name('chat');
+
+$app->post('/chat',function() use ($app)
+{
+  $chat = chatValidator::sendMsg($_POST['id'],$_POST['message']);
+  header('Location:/wetouch/chat');die;
+
+});
 
 
   $app->render('header.php', compact('app'));
