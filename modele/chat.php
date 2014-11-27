@@ -52,7 +52,8 @@ class Chat{
         $this->Message[] =[($message['firstname']) => ($message['message'])];
       }
 
-
+      if (empty($this->Message)!=1)
+       {
       foreach($this->Message as $valeur => $msg)
       {
         foreach($msg as $nom => $msgEnv)
@@ -67,8 +68,18 @@ class Chat{
       <input type="text" name="message"/>
       <input type="submit" value="Envoyer"/>
       </form>';
-      $i++;
+
     }
+    else
+    {
+      echo 'Envoyer le premier message! <form method="post" action="#">
+      <input type="text" name="id" value=' . $key . ' style="width:20px; display:none;">
+      <input type="text" name="message"/>
+      <input type="submit" value="Envoyer"/>
+      </form>';
+    }
+    $i++;
+  }
 
   }
 }
