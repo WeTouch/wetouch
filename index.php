@@ -10,6 +10,8 @@ require 'modele/loginValidator.php';
 require 'modele/SignInValidator.php';
 require 'modele/logout.php';
 require 'modele/Match.php';
+require 'modele/chat.php';
+require 'modele/chatValidator.php';
 require 'modele/FindPicture.php';
 require 'modele/AddPic.php';
 session_start();
@@ -99,8 +101,6 @@ $app = new \Slim\Slim([
     else{
       header('Location:/wetouch/signin');die;
     }
-
-
   });
   //exec
 
@@ -110,8 +110,22 @@ $app = new \Slim\Slim([
   $is_match->getMatch();
   $app->render('tind.php');
   $is_match->displayMatch();
-  })->name('tind');
+})->name('match');
 
+$app->get('/chat',function() use ($app){
+  $match = new chat();
+  $match->getTalker();
+
+  $app->render('chat.php');
+  $match->displayMatchForChat();
+})->name('chat');
+
+$app->post('/chat',function() use ($app)
+{
+  $chat = chatValidator::sendMsg($_POST['id'],$_POST['message']);
+  header('Location:/wetouch/chat');die;
+
+});
 
 
   $app->render('header.php', compact('app'));

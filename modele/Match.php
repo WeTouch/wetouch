@@ -23,7 +23,8 @@ class Match{
   {
   	foreach ($this->idNotMatchYet as $key) {
   		echo $key.' <button type="button" name=' . $key . ' onclick="match(this)">match</button>
-			 <button type="button" name=' . $key . ' onclick="moche(this)">tes moche</button><br/><br/>';
+			 <button type="button" name=' . $key . ' onclick="moche(this)">tes moche</button><br/><br/>
+			';
   	}
   }
 }
