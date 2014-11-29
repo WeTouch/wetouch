@@ -12,8 +12,9 @@ require 'modele/logout.php';
 require 'modele/Match.php';
 require 'modele/chat.php';
 require 'modele/chatValidator.php';
-require 'modele/FindPicture.php';
-require 'modele/AddPic.php';
+require 'modele/Picture.php';
+
+
 session_start();
 \Slim\Slim::registerAutoloader();
 
@@ -57,28 +58,28 @@ $app = new \Slim\Slim([
   });
 
   $app->get('/mypictures',function() use ($app){
-    $mypictures = new FindPicture();
+    $mypictures = new Picture();
     $tabPicture=array();
     $tabPicture=$mypictures->getPicture();
     $app->render('mypictures.php',array("tab" => $tabPicture));
   })->name('pictures');
 
   $app->post('/mypictures',function() use ($app){
-    
-      
-      if (isset($_POST['upload'])) {
-        echo $_POST['upload'];
-        $ad= new AddPic();
-        $ad->add();
-        echo "post : ";
-        echo "post : ".$_POST['upload'];
-        header('Location:/wetouch/mypictures');die;
-      }
-      else
-      {
-        
-        echo "post : ";
-      }
+    $pic = new Picture();
+    if (isset($_POST['upload'])) {
+      $pic->add();
+      header('Location:/wetouch/mypictures');die;
+    }
+    else if (isset($_POST['del']))
+    {
+      $pic->delete();
+      header('Location:/wetouch/mypictures');die;
+    }
+    else
+    {
+      $pic->favorit();
+      header('Location:/wetouch/mypictures');die;
+    }
   });
 
 

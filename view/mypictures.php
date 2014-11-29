@@ -27,11 +27,11 @@
             </div>
             <div id="collapseOne1" class="panel-collapse collapse" style="height: 0px;">
               <form method="post" enctype="multipart/form-data">
-    <p>
-    <input type="file" name="fichier" size="30">
-    <input type="submit" name="upload" value="Uploader">
-    </p>
-</form>
+                <p>
+                <input type="file" name="fichier" value="fichier" size="30">
+                <input type="submit" name="upload" value="Uploader">
+                </p>
+            </form>
             </div>
           </div>        </ul><!--/#portfolio-filter-->
         <ul class="portfolio-items col-3">
@@ -43,9 +43,11 @@
                 <div class="item-inner">
                     <img src="images/<?php echo $key;?>" alt="">
                     <h5>Lorem ipsum dolor sit amet</h5>
-                    <div class="overlay">    
-                        <a class="preview btn btn-success" ><i class=" icon-user"></i></a>         
-                        <a class="preview btn btn-danger" ><i class=" icon-remove"></i></a>     
+                    <div class="overlay">  
+                        <form method="post" enctype="multipart/form-data">  
+                            <button type="submit" name="fav" value="<?php echo $key; ?>" class="preview btn btn-success" ><i class=" icon-user"></i></button>     
+                            <button type="submit" name="del" value="<?php echo $key; ?>" class="preview btn btn-danger" ><i class=" icon-remove"></i></button>  
+                        </form>   
                     </div>           
                 </div>           
             </li><!--/.portfolio-item--> <?php } ?>
