@@ -1,3 +1,5 @@
+
+
 <?php
 
 //Require
@@ -9,6 +11,7 @@ require 'modele/SignInValidator.php';
 require 'modele/logout.php';
 require 'modele/Match.php';
 require 'modele/FindPicture.php';
+require 'modele/AddPic.php';
 session_start();
 \Slim\Slim::registerAutoloader();
 
@@ -42,9 +45,11 @@ $app = new \Slim\Slim([
 
     $is_logged = loginValidator::verifLogin($_POST['email'],$_POST['password']);
     if ($is_logged) {
+      echo 'test1';
       header('Location:/wetouch');die;
     }
     else{
+      echo 'test2';
       header('Location:/wetouch/login');die;
     }
   });
@@ -53,8 +58,26 @@ $app = new \Slim\Slim([
     $mypictures = new FindPicture();
     $tabPicture=array();
     $tabPicture=$mypictures->getPicture();
-    $app->render('mypictures.php');
+    $app->render('mypictures.php',array("tab" => $tabPicture));
   })->name('pictures');
+
+  $app->post('/mypictures',function() use ($app){
+    
+      
+      if (isset($_POST['upload'])) {
+        echo $_POST['upload'];
+        $ad= new AddPic();
+        $ad->add();
+        echo "post : ";
+        echo "post : ".$_POST['upload'];
+        header('Location:/wetouch/mypictures');die;
+      }
+      else
+      {
+        
+        echo "post : ";
+      }
+  });
 
 
   $app->get('/logout',function() use ($app){

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>We Touch</title>
+    <title>Home | Flat Theme</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
@@ -31,13 +31,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+                <a class="navbar-brand" href="<?php echo $app->urlFor('index');?>"><img src="images/logo.png" alt="logo"></a>
             </div>
             <?php if(isset($_SESSION["id"])){ ?>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="<?php echo $app->urlFor('index');?>"><?php echo $_SESSION["firstname"]." ".$_SESSION["name"] ?></a></li>
-                    <li><a href="<?php echo $app->urlFor('pictures');?>">pictures</a></li>
+                    <li><a href="<?php echo $app->urlFor('pictures');?>">My pictures</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="portfolio.html">Portfolio</a></li>
                     <li class="dropdown">
@@ -59,3 +59,4 @@
             </div> <?php }?>
         </div>
     </header><!--/header-->
+
