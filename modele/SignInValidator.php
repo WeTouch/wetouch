@@ -7,8 +7,17 @@ class SignInValidator {
   {
     require 'class/bdd.php';
     if(!empty($_POST)){
-      $q = array('nom'=>$nom, 'prenom'=>$prenom, 'email'=>$email, 'ddn'=>$ddn, 'genre'=>$genre, 'password'=>$password);
-      $req = $cnx->prepare("INSERT INTO t_membres (email, firstname, name, dob, genre, password) VALUES (:email,:prenom, :nom, :ddn, :genre, :password)");
+      $preference = null;
+      if ($genre == "homme")
+      {
+        $preference = "femme";
+      }
+      else if ($genre == "femme")
+      {
+        $preference = "homme";
+      }
+      $q = array('nom'=>$nom, 'prenom'=>$prenom, 'email'=>$email, 'ddn'=>$ddn, 'genre'=>$genre, 'preference'=>$preference, 'password'=>$password);
+      $req = $cnx->prepare("INSERT INTO t_membres (email, firstname, name, dob, preference, genre, password) VALUES (:email,:prenom, :nom, :ddn, :preference, :genre, :password)");
       $req->execute($q);
       return True;
     }

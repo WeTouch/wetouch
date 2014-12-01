@@ -1,12 +1,27 @@
-<h2>Formulaire de connexion :</h2>
-<form action="login" method="POST">
-
-  <label for="email">Email : </label><br/>
-  <input type="text" name="email"/><br/>
-
-  <label for="password">Password : </label><br/>
-  <input type="password" name="password" value=""/><br/><br/>
-
-  <input type="submit" value="Se connecter"/>
-</form><br/>
-<a href="<?php echo $app->urlFor('signin');?>">Vous n'avez pas de compte ?</a><br/>
+<section id="career" class="container">
+	<div class="center">
+	<div class="row">
+		<div class="col-sm-100">
+			<div class="panel-group" id="accordion1">
+				<div class="panel panel-default">
+				<div class="panel-heading">
+				<div class="form-group">
+					<center><h2>Formulaire de connexion :</h2></center>
+						<form action="login" method="POST">
+							<input type="text" name="email" class="form-control" required="required" placeholder="Email">
+								<br/>
+							<input type="text" name="password" class="form-control" required="required" placeholder="password">
+								<br/>
+							<input type="text" name="email" class="form-control" required="required" placeholder="Email">
+								<br/>
+							<input type="submit" class="form-control" value="Se connecter"/>
+						</form>
+				</div>
+				</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</section>
