@@ -12,8 +12,6 @@
 								<br/>
 							<input type="text" name="password" class="form-control" required="required" placeholder="password">
 								<br/>
-							<input type="text" name="email" class="form-control" required="required" placeholder="Email">
-								<br/>
 							<input type="submit" class="form-control" value="Se connecter"/>
 						</form>
 				</div>
