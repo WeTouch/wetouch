@@ -13,7 +13,8 @@ require 'modele/Match.php';
 require 'modele/chat.php';
 require 'modele/chatValidator.php';
 require 'modele/Picture.php';
-
+require 'modele/getProfil.php';
+require 'modele/ModifProfilValidator.php';
 
 session_start();
 \Slim\Slim::registerAutoloader();
@@ -126,6 +127,27 @@ $app->post('/chat',function() use ($app)
   $chat = chatValidator::sendMsg($_POST['id'],$_POST['message']);
   header('Location:/wetouch/chat');die;
 
+});
+
+$app->get('/profil',function() use ($app){
+  $myInformations = new getProfil();
+  $tabInformations=array();
+  $tabInformations=$myInformations->getInformations();
+  $app->render('profil.php',array("tab" => $tabInformations));
+})->name('profil');
+
+$app->get('/Modifprofil',function() use ($app){
+  $myInformations = new getProfil();
+  $tabInformations=array();
+  $tabInformations=$myInformations->getInformations();
+  $app->render('Modifprofil.php',array("tab" => $tabInformations));
+})->name('Modifprofil');
+
+$app->post('/Modifprofil', function() use ($app)
+{
+  $profil = new ModifProfilValidator();
+  $profil->verifProfil($_POST['description'],$_POST['genre']);
+  header('Location:/wetouch/profil');die;
 });
 
 

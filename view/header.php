@@ -11,6 +11,7 @@
     <link href="css/prettyPhoto.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
+
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -36,7 +37,7 @@
             <?php if(isset($_SESSION["id"])){ ?>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="<?php echo $app->urlFor('index');?>"><?php echo $_SESSION["firstname"]." ".$_SESSION["name"] ?></a></li>
+                    <li class="active"><a href="<?php echo $app->urlFor('profil');?>"><?php echo $_SESSION["firstname"]." ".$_SESSION["name"] ?></a></li>
 
                     <li><a href="<?php echo $app->urlFor('pictures');?>">pictures</a></li>
                     <li><a href="<?php echo $app->urlFor('match');?>">Match</a></li>
@@ -60,4 +61,3 @@
             </div> <?php }?>
         </div>
     </header><!--/header-->
-
