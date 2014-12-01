@@ -3,7 +3,13 @@
     <div class="row">
       <div class="col-sm-100">
         <div class="panel-group" id="accordion1">
-          <div class="panel panel-default">
+				<div class="panel panel-default">
+				<div class="panel-heading">
+				<div class="form-group">
+						<center>
+							<a href="<?php echo $app->urlFor('signin');?>"><h3>Vous n'avez pas de compte ?</h3></a><br/>
+						</center>
+						<div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
                 <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1">
@@ -43,8 +49,13 @@
               </div>
             </div>
           </div>
-        </div><!--/#accordion3-->
-      </div><!--/.col-sm-4-->
+		
+				</div>
+				</div>
+				</div>
+
+        </div>
+      </div>
     </div>
   </section>
 
