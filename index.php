@@ -109,15 +109,27 @@ $app = new \Slim\Slim([
 
   $app->get('/tind',function() use ($app){
   $is_match = new Match();
-  $is_match->getMatch();
+  if($is_match->getMatch())
+  {
+    $is_match->displayMatch();
+  }
+  else
+  {
+    echo "plus personne ";
+  }
   $app->render('tind.php');
-  $is_match->displayMatch();
 })->name('match');
+
+  $app->post('/tind',function() use ($app){
+  $is_match = new Match();
+  $is_match->getMatch();
+  $is_match->vote();
+  header('Location:/wetouch/tind');die;
+});
 
 $app->get('/chat',function() use ($app){
   $match = new chat();
   $match->getTalker();
-
   $app->render('chat.php');
   $match->displayMatchForChat();
 })->name('chat');
