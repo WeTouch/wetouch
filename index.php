@@ -34,6 +34,10 @@ $app = new \Slim\Slim([
       $app->render('login.php');
       $app->render('signin.php');
     }
+    else
+    {
+      header('Location:/wetouch/tind');die;
+    }
   })->name('index');
 
   $app->get('/contact',function() use ($app){

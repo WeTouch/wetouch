@@ -14,7 +14,7 @@ class getProfil {
     while($info= $req->fetch())
     {
       $this->tabInformations[] = array("email" => $info['email'], "firstname" => $info['firstname'], "name" => $info['name'],"preference" =>$info['preference'],
-      "prefAge" => $info['prefAge'], "dob" => $info['dob'],"position" => $info['position'], "genre" => $info['genre'], "description" => $info['description'],
+       "dob" => $info['dob'],"position" => $info['position'], "genre" => $info['genre'], "description" => $info['description'],
       "photo_id" => $info['photo_id']);
     }
     return $this->tabInformations;
