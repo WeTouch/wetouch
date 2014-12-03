@@ -34,7 +34,7 @@ $app = new \Slim\Slim([
     }
     else
     {
-      header('Location:/wetouch/tind');die;
+      $app->redirect($app->urlFor('match'));
     }
   })->name('index');
 
@@ -52,11 +52,11 @@ $app = new \Slim\Slim([
     $is_logged = loginValidator::verifLogin($_POST['email'],$_POST['password']);
     if ($is_logged) {
       echo 'test1';
-      header('Location:/wetouch');die;
+      $app->redirect($app->urlFor('index'));
     }
     else{
       echo 'test2';
-      header('Location:/wetouch/login');die;
+      $app->redirect($app->urlFor('login'));
     }
   });
 
@@ -71,24 +71,22 @@ $app = new \Slim\Slim([
     $pic = new Picture();
     if (isset($_POST['upload'])) {
       $pic->add();
-      header('Location:/wetouch/mypictures');die;
     }
     else if (isset($_POST['del']))
     {
       $pic->delete();
-      header('Location:/wetouch/mypictures');die;
     }
     else
     {
       $pic->favorit();
-      header('Location:/wetouch/mypictures');die;
     }
+    $app->redirect($app->urlFor('pictures'));
   });
 
 
   $app->get('/logout',function() use ($app){
     logout::function_logout();
-    header('Location:/wetouch/');die;
+    $app->redirect($app->urlFor('index'));
   })->name('logout');
 
 
@@ -98,12 +96,12 @@ $app = new \Slim\Slim([
 
   $app->post('/signin',function() use ($app){
 
-    $is_signin = SignInValidator::verifSignIn($_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['ddn'],$_POST['genre'],$_POST['password'],$_POST['verifpassword']);
+    $is_signin = SignInValidator::verifSignIn($_POST['name'],$_POST['prenom'],$_POST['email'],$_POST['ddn'],$_POST['genre'],$_POST['password'],$_POST['verifpassword']);
     if ($is_signin) {
-      header('Location:/wetouch/login');die;
+      $app->redirect($app->urlFor('login'));
     }
     else{
-      header('Location:/wetouch/signin');die;
+      $app->redirect($app->urlFor('signin'));
     }
   });
   //exec
@@ -126,7 +124,7 @@ $app = new \Slim\Slim([
   $is_match = new Match();
   $is_match->getMatch();
   $is_match->vote();
-  header('Location:/wetouch/tind');die;
+  $app->redirect($app->urlFor('match'));
 });
 
 $app->get('/chat',function() use ($app){
@@ -139,7 +137,7 @@ $app->get('/chat',function() use ($app){
 $app->post('/chat',function() use ($app)
 {
   $chat = chatValidator::sendMsg($_POST['id'],$_POST['message']);
-  header('Location:/wetouch/chat');die;
+  $app->redirect($app->urlFor('chat'));
 
 });
 
@@ -161,7 +159,7 @@ $app->post('/Modifprofil', function() use ($app)
 {
   $profil = new ModifProfilValidator();
   $profil->verifProfil($_POST['description'],$_POST['genre']);
-  header('Location:/wetouch/profil');die;
+  $app->redirect($app->urlFor('profil'));
 });
 
 

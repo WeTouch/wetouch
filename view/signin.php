@@ -21,7 +21,7 @@
               <div class="panel-body">
 				<form action="signin" method="POST" >
 					<div class="form-group">
-						<input type="text" name="prenom" class="form-control" required="required" placeholder="Nom">
+						<input type="text" name="name" class="form-control" required="required" placeholder="Nom">
 							<br/>
 						<input type="text" name="prenom" class="form-control" required="required" placeholder="Prenom">
 							<br/>

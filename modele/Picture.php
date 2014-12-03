@@ -26,6 +26,26 @@ class Picture {
     $req = $cnx->prepare($sql);
     $req->execute(array('id'=>$_SESSION["id"],'path'=>$_POST['del']));
     unlink('images/'.$_POST['del']);
+    if($_POST['del']==$_SESSION['path'])
+    {
+      $sql = 'SELECT id FROM t_photo where id_membres=:id';
+      $req = $cnx->prepare($sql);
+      $req->execute(array('id'=>$_SESSION["id"]));
+      $row_count = $req->rowCount();
+      if($row_count==0)
+      {
+        $sql = 'UPDATE t_membres SET photo_id="homme.jpg" WHERE id=:id';
+        $req = $cnx->prepare($sql);
+        $req->execute(array('id'=>$_SESSION["id"]));
+        $_SESSION['path']="homme.jpg";
+      }
+      else
+      {
+        $sql = 'UPDATE t_membres SET photo_id=(SELECT path FROM t_photo WHERE id_membres=:id) WHERE id=:id';
+        $req = $cnx->prepare($sql);
+        $req->execute(array('id'=>$_SESSION["id"]));
+      }
+    }
   }
   public function favorit()
   {
@@ -33,6 +53,7 @@ class Picture {
     $sql = 'UPDATE t_membres SET photo_id=:path WHERE id=:id';
     $req = $cnx->prepare($sql);
     $req->execute(array('id'=>$_SESSION["id"],'path'=>$_POST['fav']));
+    $_SESSION['path']=$_POST['fav'];
   }
   public function add()
   {
@@ -79,13 +100,13 @@ class Picture {
         $sql = 'UPDATE t_membres set photo_id = :photoId WHERE id=:id';
         $req = $cnx->prepare($sql);
         $req->execute(array('photoId'=>$_SESSION['id'] . "/" . $name_file,'id'=>$_SESSION['id']));
+        $_SESSION['path']=$_SESSION['id'] . "/" . $name_file;
       }
       $req = $cnx->prepare("INSERT INTO t_photo(path,id_membres) Values (:path,:id_membres)"); 
       $reponse = $req->execute(array(
         'path' => $_SESSION['id'] . "/" . $name_file,
         'id_membres' => $_SESSION['id']
         ));
-      header('location:../../index.php');
     }
   }
 }
