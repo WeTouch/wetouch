@@ -42,46 +42,68 @@ class Chat{
   {
     require 'class/bdd.php';
     $i = 0;
+    $j = 0;
     foreach ($this->MatchYet as $key) {
+
+
+
+
+      echo $key .'<br/>';
+      $req = $cnx->prepare("SELECT c.message,m.firstname FROM t_chat c , t_membres m WHERE ((c.SendId =:id AND c.ReceiveId = :key) OR (c.SendId=:key AND c.ReceiveId = :id)) AND c.SendId = m.id  ");
+      $req->execute(array('id'=>$_SESSION['id'],'key'=>$key));
+      while ($message=$req->fetch())
+      {
+
+
+        $TabFinal[$this->NameMatch[$i]][] = [($message['firstname']) => ($message['message'])];
+        $j++;
+      }
+
+      $i++;
+      /*    var_dump($this->MatchYet);die;
       echo "<h4>Discussion avec " . $this->NameMatch[$i] . "</h4>";
       unset($this->Message);
       $req = $cnx->prepare("SELECT c.message,m.firstname FROM t_chat c , t_membres m WHERE ((c.SendId =:id AND c.ReceiveId = :key) OR (c.SendId=:key AND c.ReceiveId = :id)) AND c.SendId = m.id  ");
       $req->execute(array('id'=>$_SESSION['id'],'key'=>$key));
       while ($message=$req->fetch())
       {
-        $this->Message[] =[($message['firstname']) => ($message['message'])];
-      }
-
-      if (empty($this->Message)!=1)
-       {
-      foreach($this->Message as $valeur => $msg)
-      {
-        foreach($msg as $nom => $msgEnv)
-        {
-          echo $nom . " : " . $msgEnv . "<br/>";
-        }
-      }
-
-      echo '
-      <form method="post" action="#">
-      <input type="text" name="id" value=' . $key . ' style="width:20px; display:none;">
-      <input type="text" name="message"/>
-      <input type="submit" value="Envoyer"/>
-      </form>';
-
+      $this->Message[] =[($message['firstname']) => ($message['message'])];
     }
-    else
+
+
+    if (empty($this->Message)!=1)
     {
-      echo 'Envoyer le premier message! <form method="post" action="#">
-      <input type="text" name="id" value=' . $key . ' style="width:20px; display:none;">
-      <input type="text" name="message"/>
-      <input type="submit" value="Envoyer"/>
-      </form>';
-    }
-    $i++;
+    foreach($this->Message as $valeur => $msg)
+    {
+    foreach($msg as $nom => $msgEnv)
+    {
+    echo $nom . " : " . $msgEnv . "<br/>";
   }
+}
 
-  }
+echo '
+<form method="post" action="#">
+<input type="text" name="id" value=' . $key . ' style="width:20px; display:none;">
+<input type="text" name="message"/>
+<input type="submit" value="Envoyer"/>
+</form>';
+
+}
+else
+{
+echo 'Envoyer le premier message! <form method="post" action="#">
+<input type="text" name="id" value=' . $key . ' style="width:20px; display:none;">
+<input type="text" name="message"/>
+<input type="submit" value="Envoyer"/>
+</form>';
+}
+$i++; */
+
+}
+
+return $TabFinal;
+
+}
 }
 
 ?>

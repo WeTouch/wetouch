@@ -130,8 +130,8 @@ $app = new \Slim\Slim([
 $app->get('/chat',function() use ($app){
   $match = new chat();
   $match->getTalker();
-  $app->render('chat.php');
-  $match->displayMatchForChat();
+  $tabMsg = $match->displayMatchForChat();
+  $app->render('chat.php',array("tabMsg"=>$tabMsg));
 })->name('chat');
 
 $app->post('/chat',function() use ($app)
