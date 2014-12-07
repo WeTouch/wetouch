@@ -1,5 +1,4 @@
 <h3> Chat </h3>
-<?php var_dump($this->data['tabMsg']); ?>
 <?php
 foreach ($this->data['tabMsg'] as $perso => $zboub)
 {

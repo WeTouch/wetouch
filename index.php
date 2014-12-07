@@ -112,12 +112,15 @@ $app = new \Slim\Slim([
   if($is_match->getMatch())
   {
     $is_match->displayMatch();
+    $people = $is_match->displayMatch();
+    $app->render('tind.php',array("people"=>$people));
+
   }
   else
   {
     echo "plus personne ";
   }
-  $app->render('tind.php');
+
 })->name('match');
 
   $app->post('/tind',function() use ($app){

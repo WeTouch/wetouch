@@ -32,15 +32,11 @@ AND id NOT IN (SELECT id FROM t_membres WHERE m.genre!= (SELECT preference FROM 
   public function displayMatch()
   {
     require 'class/bdd.php';
-    $req = $cnx->prepare("SELECT photo_id FROM t_membres WHERE id=:id");
+    $req = $cnx->prepare("SELECT * FROM t_membres WHERE id=:id");
     $req->execute(array('id'=>$this->idNotMatchYet[0]));
     $fet = $req->fetch() ;
-    echo '<img src="images/'.$fet['photo_id'].'" style="width:500px;"/>';
-		echo ' <form method="post" enctype="multipart/form-data">  
-                            <button type="submit" name="beau" value="1" class="preview btn btn-success" ><i class="glyphicon glyphicon-heart"></i></button>     
-                            <button type="submit" name="beau" value="0" class="preview btn btn-danger" ><i class=" icon-remove"></i></button>  
-                        </form>   
-		';
+		return $fet;
+
   }
   public function vote()
   {
@@ -51,5 +47,3 @@ AND id NOT IN (SELECT id FROM t_membres WHERE m.genre!= (SELECT preference FROM 
 }
 
 ?>
-
-

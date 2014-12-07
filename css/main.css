@@ -1115,3 +1115,23 @@ ul.faq li > div h3 {
   width : 200px;
   height : 200px;
 }
+
+
+#people
+{
+  position : relative;
+  text-align : center;
+}
+
+.tindbtn
+{
+visibility : hidden;
+position : relative;
+top : -150px;
+
+}
+
+#people img
+{
+border : 1px solid black;
+}

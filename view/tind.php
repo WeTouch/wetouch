@@ -1,13 +1,39 @@
+<?php
+$timestamp = strtotime( $this->data['people']['dob']);
+$dateNow = time();
+$ageSec = $dateNow-$timestamp;
+$age = floor($ageSec / (365*24*60*60));
+
+?>
+<div id="people">
+	<div id="info">
+		<h3><?php echo $this->data['people']['firstname'] . " - " .  $age . " ans" ?></h3>
+	</div>
+	<img onmouseover="showButton()"  onmouseout="hideButton()" id="imgTind" src="images/<?php echo $this->data['people']['photo_id'] ?>" style="width:200px;"/>
+	<form method="post" enctype="multipart/form-data">
+		<button onmouseover="showButton()"  onmouseout="hideButton()" type="submit" name="beau" value="1"  class="tindbtn preview btn btn-success" ><i class="glyphicon glyphicon-heart"></i></button>
+		<button onmouseover="showButton()"  onmouseout="hideButton()" type="submit" name="beau" value="0" class="tindbtn preview btn btn-danger" ><i class=" icon-remove"></i></button>
+	</form>
+	<div id="info">
+	<h5> <?= $this->data['people']['description'] ?></h5>
+	</div>
+</div>
+
+
 <script>
-function match($this)
+function showButton()
 {
-	varMatch = $this.name;
-	alert(varMatch);
+	var button = document.getElementsByClassName("tindbtn");
+	button[0].style.visibility="visible";
+	button[1].style.visibility="visible";
 
 }
-function moche($this)
+
+function hideButton()
 {
-	varMoche = $this.name;
-	alert(varMoche);
+	var button = document.getElementsByClassName("tindbtn");
+	button[0].style.visibility="hidden";
+	button[1].style.visibility="hidden";
+
 }
 </script>
