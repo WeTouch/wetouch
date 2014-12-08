@@ -47,3 +47,4 @@
             </div> <?php }?>
         </div>
     </header><!--/header-->
+    <div class="content">
