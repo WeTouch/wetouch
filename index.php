@@ -50,13 +50,11 @@ $app = new \Slim\Slim([
   $app->post('/login',function() use ($app){
 
     $is_logged = loginValidator::verifLogin($_POST['email'],$_POST['password']);
-    if ($is_logged) {
-      echo 'test1';
-      $app->redirect($app->urlFor('index'));
-    }
-    else{
-      echo 'test2';
-      $app->redirect($app->urlFor('index'));
+    if(!isset($_SESSION['id']))
+    {
+      $app->render('Error.php');
+      $app->render('login.php');
+      $app->render('signin.php');
     }
   });
 
@@ -125,7 +123,7 @@ $app = new \Slim\Slim([
   }
   else
   {
-    echo "plus personne ";
+    $app->render('NoMatch.php');
   }
 
 })->name('match');
