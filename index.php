@@ -13,6 +13,7 @@ require 'modele/chatValidator.php';
 require 'modele/Picture.php';
 require 'modele/getProfil.php';
 require 'modele/ModifProfilValidator.php';
+require 'modele/ModifProfilMoreValidator.php';
 
 session_start();
 \Slim\Slim::registerAutoloader();
@@ -152,17 +153,20 @@ $app->post('/chat',function() use ($app)
 $app->get('/profil',function() use ($app){
   $myInformations = new getProfil();
   $tabInformations=array();
+  $tabMoreInformations=array();
   $tabInformations=$myInformations->getInformations();
-  $app->render('profil.php',array("tab" => $tabInformations));
+  $tabMoreInformations = $myInformations->getMoreInformations();
+  $app->render('profil.php',array("tab" => $tabInformations,"tabMore" => $tabMoreInformations));
 })->name('profil');
 
 $app->get('/Modifprofil',function() use ($app){
   $myInformations = new getProfil();
   $tabInformations=array();
+  $tabMoreInformations=array();
   $tabInformations=$myInformations->getInformations();
-  $app->render('Modifprofil.php',array("tab" => $tabInformations));
+  $tabMoreInformations = $myInformations->getMoreInformations();
+  $app->render('Modifprofil.php',array("tab" => $tabInformations,"tabMore" => $tabMoreInformations));
 })->name('Modifprofil');
-
 $app->post('/Modifprofil', function() use ($app)
 {
   $profil = new ModifProfilValidator();
@@ -170,6 +174,20 @@ $app->post('/Modifprofil', function() use ($app)
   $app->redirect($app->urlFor('profil'));
 });
 
+$app->get('/ModifprofilMore',function() use ($app){
+  $myInformations = new getProfil();
+  $tabInformations=array();
+  $tabMoreInformations=array();
+  $tabInformations=$myInformations->getInformations();
+  $tabMoreInformations = $myInformations->getMoreInformations();
+  $app->render('ModifprofilMore.php',array("tab" => $tabInformations,"tabMore" => $tabMoreInformations));
+})->name('ModifprofilMore');
+$app->post('/ModifprofilMore', function() use ($app)
+{
+  $profil = new ModifProfilMoreValidator();
+  $profil->verifProfilMore($_POST['taille'],$_POST['poids'],$_POST['couleurCheveux'],$_POST['couleurYeux'],$_POST['bijoux'],$_POST['fumeur'],$_POST['origine'],$_POST['formation'],$_POST['situation'],$_POST['statut'],$_POST['cherche'],$_POST['libre']);
+  $app->redirect($app->urlFor('profil'));
+});
 
   $app->render('header.php', compact('app'));
   $app->run();

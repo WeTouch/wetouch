@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 03 Décembre 2014 à 16:42
+-- Généré le :  Lun 08 Décembre 2014 à 15:26
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -33,17 +33,37 @@ CREATE TABLE IF NOT EXISTS `t_chat` (
   `message` text NOT NULL,
   `date` timestamp NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
 
 --
--- Contenu de la table `t_chat`
+-- Structure de la table `t_informations`
 --
 
-INSERT INTO `t_chat` (`id`, `SendId`, `ReceiveId`, `message`, `date`) VALUES
-(37, 1, 6, 'Zboub', '0000-00-00 00:00:00'),
-(38, 1, 6, 'Zboub de ouf oui', '2014-12-03 13:40:47'),
-(39, 6, 1, 'Mdr ouais frère', '2014-12-03 13:40:47'),
-(40, 1, 2, 'Yo', '2014-12-03 14:12:20');
+CREATE TABLE IF NOT EXISTS `t_informations` (
+  `id` int(11) NOT NULL,
+  `taille` varchar(255) NOT NULL,
+  `poids` int(11) NOT NULL,
+  `couleurCheveux` varchar(255) NOT NULL,
+  `couleurYeux` varchar(255) NOT NULL,
+  `bijoux` varchar(255) NOT NULL,
+  `fumeur` varchar(255) NOT NULL,
+  `origine` varchar(255) NOT NULL,
+  `formation` varchar(255) NOT NULL,
+  `situation` varchar(255) NOT NULL,
+  `statut` varchar(255) NOT NULL,
+  `cherche` varchar(255) NOT NULL,
+  `libre` varchar(255) NOT NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `t_informations`
+--
+
+INSERT INTO `t_informations` (`id`, `taille`, `poids`, `couleurCheveux`, `couleurYeux`, `bijoux`, `fumeur`, `origine`, `formation`, `situation`, `statut`, `cherche`, `libre`) VALUES
+(1, '  175', 65, '  Brun', '  Bleu', '  Non', '  Non', '  Europe', '  Etudes supÃ©rieur', '  Etudiant', '  En couple avec ma main gauche', 'De la bite', '  Je me reproduis');
 
 -- --------------------------------------------------------
 
@@ -66,15 +86,14 @@ CREATE TABLE IF NOT EXISTS `t_membres` (
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `ix_photo` (`photo_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
 
 --
 -- Contenu de la table `t_membres`
 --
 
 INSERT INTO `t_membres` (`id`, `email`, `firstname`, `name`, `dob`, `position`, `preference`, `prefAge`, `genre`, `description`, `photo_id`, `password`) VALUES
-(1, 'jules.duvivier@y-nov.com', 'Jules', 'Duvivier', '1997-01-13', 'Biarritz', 'femme', '13-14', 'homme', 'Description de ouf blablabla', 'homme.jpg', 'zboubdeouf'),
-(11, 'jules.duvivier@y-nov.com', 'Jimmy', 'Duvivier', '1997-09-13', '', NULL, '', 'homme', '', '11/18.jpg', 'zboub'),
+(1, 'jules.duvivier@y-nov.com', 'Jules', 'Duvivier', '1997-01-13', 'Biarritz', 'femme', '13-14', 'homme', 'Description de ouf blablabla\r\nrtÃ trÃ \r\noekraor\r\nko\r\nkaerokreokrek\r\noreokrokokezo\r\neo\r\neko\r\nfrae\r\nokrekorok\r\ne', 'homme.jpg', 'zboubdeouf'),
 (3, 'damien.bellet@y-nov.com', 'Damien', 'Bellet', '1995-06-20', '', NULL, '', 'Monsieur', '', '0', '$2y$11$pwvgZilMTVpKxRJKbKSPoeleBEAwV70wkk0i9qH0oVLmECC89ZTEa'),
 (4, 'damien.bellet@y-nov.com', 'Damien', 'Bellet', '1995-06-20', '', NULL, '', 'Monsieur', '', '0', '$2y$11$kkx4/.HlRW3vRBYYn25WyeyzIijU8cipoQpZfXAAnxkQdHsGdBo5G'),
 (5, 'zboub@zboub.com', 'Michel', 'Zboub', '1997-12-13', '', NULL, '', 'Monsieur', '', '0', '$2y$11$YuyLn6DD67ZcVGrGRU7vQ.CfP5fMRqXtJ5fxuRNEZ9dEPKrqjSU4a'),
@@ -84,7 +103,16 @@ INSERT INTO `t_membres` (`id`, `email`, `firstname`, `name`, `dob`, `position`, 
 (6, 'jules.jules@jules.fr', 'a', 'a', '0123-12-13', '', NULL, '', 'Monsieur', '', '', '$2y$11$wPYk29VSyKi7f5zUFzI0XuDhKzRvnQhAYUeDN4iEt.z5Zm8APtxB6'),
 (12, 'db@hotmail.fr', 'Damien', 'Bellet', '1995-01-20', '', NULL, '', 'homme', '', '', 'azerty'),
 (13, '', 'de', 'az', '0005-02-12', '', NULL, '', 'homme', '', '', 'zb'),
-(14, 'db.db.db@hotmail.fr', 'Damien', 'Bellet', '1888-01-20', '', 'femme', '', 'homme', '', '', 'xd');
+(14, 'db.db.db@hotmail.fr', 'Damien', 'Bellet', '1888-01-20', '', 'femme', '', 'homme', '', '', 'xd'),
+(15, 'sarah.lartigau@hotmail.fr', 'Sarah', 'Lartigau', '1997-03-13', '', 'homme', '', 'femme', 'Je m''appelle Sarah !', '15/20.jpg', 'zboubdeouf'),
+(16, 'emma.tjulander@hotmail.fr', 'Emma', 'Tjulander', '1997-01-13', '', 'homme', '', 'femme', '', '16/31.jpg', 'zboubdeouf'),
+(25, 'damien.bellet@y-nov.com', 'Damien', 'Bellet', '1967-09-13', '', 'femme', '', 'homme', '', '', 'zboubdeouf'),
+(26, 'damien.bellet@y-nov.com', 'Damien', 'Bellet', '1967-09-13', '', 'femme', '', 'homme', '', '', 'zboubdeouf'),
+(27, 'damien.bellet@y-nov.com', 'Damien', 'Bellet', '1967-09-13', '', 'femme', '', 'homme', '', '', 'zboubdeouf'),
+(28, 'damien.bellet@y-nov.com', 'Damien', 'Bellet', '1967-09-13', '', 'femme', '', 'homme', '', '', 'zboubdeouf'),
+(29, 'louka.hanuise@y-nov.com', 'Louka', 'Hanuise', '1967-09-13', '', 'femme', '', 'homme', '', '', 'zboubdeouf'),
+(30, 'thibault.denuc@y-nov.com', 'Thibault', 'Denuc', '1999-01-13', '', 'femme', '', 'homme', '', '', 'zboubdeouf'),
+(32, 'jules.du33vivier@y-nov.com', 'wxwxwx', 'wxwxwx', '1997-01-13', '', 'femme', '', 'homme', '', '', 'az');
 
 -- --------------------------------------------------------
 
@@ -97,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `t_photo` (
   `path` varchar(255) NOT NULL,
   `id_membres` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=35 ;
 
 --
 -- Contenu de la table `t_photo`
@@ -107,7 +135,10 @@ INSERT INTO `t_photo` (`id`, `path`, `id_membres`) VALUES
 (1, 'photo.jpg', 4),
 (2, 'zboub.jpg', 4),
 (6, '6/1.jpg', 6),
-(19, '11/18.jpg', 11);
+(31, '16/31.jpg', 16),
+(19, '11/18.jpg', 11),
+(30, '16/30.jpg', 16),
+(29, '15/20.jpg', 15);
 
 -- --------------------------------------------------------
 
@@ -129,41 +160,35 @@ CREATE TABLE IF NOT EXISTS `t_result` (
 --
 
 INSERT INTO `t_result` (`voter`, `vote`, `result`) VALUES
-(1, 6, 1),
-(6, 1, 1),
-(1, 3, 0),
-(1, 5, 1),
-(1, 2, 1),
-(2, 1, 1),
-(1, 4, 1),
-(4, 1, 1),
-(12, 1, 1),
-(1, 12, 1),
-(1, 7, 0),
-(1, 8, 0),
-(11, 1, 0),
-(1, 13, 0),
-(1, 14, 0),
-(11, 2, 0),
-(11, 3, 0),
-(11, 4, 0),
-(11, 5, 0),
-(11, 6, 0),
-(11, 7, 0),
-(11, 8, 0),
-(11, 12, 0),
-(11, 13, 0),
-(11, 14, 0),
-(12, 11, 1),
-(12, 3, 1),
-(12, 4, 1),
-(12, 5, 1),
-(12, 2, 1),
-(12, 8, 1),
-(12, 7, 1),
-(12, 6, 1),
+(1, 15, 1),
+(12, 29, 1),
+(12, 28, 1),
+(12, 27, 1),
+(12, 26, 1),
+(12, 25, 1),
+(12, 24, 1),
+(12, 23, 1),
+(12, 22, 1),
+(12, 21, 1),
+(12, 20, 1),
+(12, 19, 1),
+(12, 18, 1),
+(12, 17, 1),
+(12, 16, 1),
+(12, 15, 1),
+(12, 14, 1),
 (12, 13, 1),
-(12, 14, 1);
+(12, 6, 1),
+(12, 7, 1),
+(12, 8, 1),
+(12, 2, 1),
+(12, 5, 1),
+(12, 4, 1),
+(12, 3, 1),
+(12, 11, 1),
+(12, 1, 1),
+(16, 1, 1),
+(1, 16, 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
