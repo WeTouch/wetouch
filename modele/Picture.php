@@ -41,9 +41,14 @@ class Picture {
       }
       else
       {
-        $sql = 'UPDATE t_membres SET photo_id=(SELECT path FROM t_photo WHERE id_membres=:id) WHERE id=:id';
+        $sql1 = 'SELECT Min(path) FROM t_photo WHERE id_membres=:id ORDER BY id';
+        $req1 = $cnx->prepare($sql1);
+        $req1->execute(array('id'=>$_SESSION["id"]));
+        $min= $req1->fetch();
+        $sql = 'UPDATE t_membres SET photo_id=:min WHERE id=:id';
         $req = $cnx->prepare($sql);
-        $req->execute(array('id'=>$_SESSION["id"]));
+        $req->execute(array('id'=>$_SESSION["id"],'min'=>$min[0]));
+        $_SESSION['path']=$min[0];
       }
     }
   }
