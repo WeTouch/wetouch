@@ -95,7 +95,9 @@ $app = new \Slim\Slim([
   })->name('signin');
 
   $app->post('/signin',function() use ($app){
+    $is_email = SignInValidator::verifEmail($_POST['email']);
 
+    if ($is_email==1) {
     $is_signin = SignInValidator::verifSignIn($_POST['name'],$_POST['prenom'],$_POST['email'],$_POST['ddn'],$_POST['genre'],$_POST['password'],$_POST['verifpassword']);
     if ($is_signin) {
       $app->redirect($app->urlFor('login'));
@@ -103,6 +105,11 @@ $app = new \Slim\Slim([
     else{
       $app->redirect($app->urlFor('signin'));
     }
+  }
+  else
+  {
+    echo $is_email;
+  }
   });
   //exec
 

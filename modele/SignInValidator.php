@@ -5,6 +5,27 @@ use Nette\Mail\Message;
 
 class SignInValidator {
 
+  static function verifEmail($email)
+  {
+    require 'class/bdd.php';
+    $req = $cnx->prepare("SELECT email FROM t_membres");
+    $req->execute();
+    while($mail = $req->fetch())
+    {
+      $tabMail[]=$mail['email'];
+    }
+
+    if(in_array($email,$tabMail ))
+    {
+       $msgerreur = "email déjà utilisé";
+       return $msgerreur;
+    }
+    else
+    {
+      return True;
+
+    }
+  }
   static function verifSignIn($nom,$prenom,$email,$ddn,$genre,$password,$verifPassword)
   {
     require 'class/bdd.php';
