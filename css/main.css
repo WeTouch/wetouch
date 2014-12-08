@@ -1138,7 +1138,7 @@ border : 1px solid black;
 
 footer
 {
-  position : absolute;
+  position : fixed;
   bottom : 0;
   width : 100%
 }
