@@ -57,7 +57,7 @@ $app = new \Slim\Slim([
     }
     else{
       echo 'test2';
-      $app->redirect($app->urlFor('login'));
+      $app->redirect($app->urlFor('index'));
     }
   });
 

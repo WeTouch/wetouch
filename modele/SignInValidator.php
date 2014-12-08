@@ -14,7 +14,7 @@ class SignInValidator {
     {
       $tabMail[]=$mail['email'];
     }
-
+    
     if(in_array($email,$tabMail ))
     {
        $msgerreur = "email déjà utilisé";

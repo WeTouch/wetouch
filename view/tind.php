@@ -7,7 +7,7 @@ $age = floor($ageSec / (365*24*60*60));
 ?>
 <div id="people">
 	<div id="info">
-		<h3><?php echo $this->data['people']['firstname'] . " - " .  $age . " ans" ?></h3>
+		<h3><?php echo $this->data['people']['firstname'] . " - " .  $age . " ans"; ?></h3>
 	</div>
 	<div id="contentPortofolio">
 		<div id="contentcontent">
@@ -15,7 +15,7 @@ $age = floor($ageSec / (365*24*60*60));
 		        <ul class="portfolio-items col-3">
 		            <li class="portfolio-item joomla bootstrap">
 		                <div class="item-inner">
-		                    <img src="images/16/31.jpg" alt="">
+		                    <img src="images/<?php echo $this->data['people']['photo_id'];?>" alt="">
 		                    <h5></h5>
 		                    <div class="overlay">  
 		                        <form method="post" enctype="multipart/form-data" class="preview">  
