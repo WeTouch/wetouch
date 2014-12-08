@@ -1,7 +1,7 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,700,300);
 .clearfix {
   *zoom: 1;
 }
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700,300);
 .clearfix:before,
 .clearfix:after {
   display: table;
@@ -1135,7 +1135,10 @@ top : -150px;
 {
 border : 1px solid black;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 0276c68944889a1868804ffd06b01924d7925c66
+footer
+{
+  position : absolute;
+  bottom : 0;
+  width : 100%
+}
