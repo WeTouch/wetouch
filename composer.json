@@ -1,0 +1,8 @@
+
+{
+    "require": {
+        "slim/slim": "2.*",
+		"nette/mail": "2.3.*@dev",
+        "petebrowne/slim-layout-view": "0.3.*"
+    }
+}
