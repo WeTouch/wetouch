@@ -11,12 +11,12 @@ class Chat{
   {
 
     require 'class/bdd.php';
-    $req = $cnx->prepare("SELECT r.vote, m.firstname FROM t_result r, t_membres m  WHERE (r.voter =:id AND r.result = 1 AND r.vote IN ( SELECT r.voter FROM t_result r WHERE r.vote=:id AND r.result =1)) AND r.vote = m.id");
+    $req = $cnx->prepare("SELECT r.vote, m.firstname,m.photo_id FROM t_result r, t_membres m  WHERE (r.voter =:id AND r.result = 1 AND r.vote IN ( SELECT r.voter FROM t_result r WHERE r.vote=:id AND r.result =1)) AND r.vote = m.id");
     $req->execute(array('id'=>$_SESSION['id']));
     while($idMatch=$req->fetch())
     {
       $this->MatchYet[]=$idMatch['vote'];
-      $this->NameMatch[]=$idMatch['firstname'];
+      $this->NameMatch[]=$idMatch['firstname']."*".$idMatch['photo_id'];
     }
 
     return array($this->MatchYet , $this->NameMatch);
@@ -50,13 +50,15 @@ class Chat{
 
 
       echo $key .'<br/>';
-      $req = $cnx->prepare("SELECT c.message,m.firstname FROM t_chat c , t_membres m WHERE ((c.SendId =:id AND c.ReceiveId = :key) OR (c.SendId=:key AND c.ReceiveId = :id)) AND c.SendId = m.id  ");
+      $req = $cnx->prepare("SELECT c.message,m.firstname,m.id FROM t_chat c , t_membres m WHERE ((c.SendId =:id AND c.ReceiveId = :key) OR (c.SendId=:key AND c.ReceiveId = :id)) AND c.SendId = m.id  ");
       $req->execute(array('id'=>$_SESSION['id'],'key'=>$key));
       while ($message=$req->fetch())
       {
 
 
+
         $TabFinal[$this->NameMatch[$i] . "*" . $key][] = [($message['firstname']) => ($message['message'])];
+
         $j++;
       }
 
