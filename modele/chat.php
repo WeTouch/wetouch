@@ -43,6 +43,7 @@ class Chat{
     require 'class/bdd.php';
     $i = 0;
     $j = 0;
+    $TabFinal="";
     foreach ($this->MatchYet as $key) {
 
 
@@ -55,7 +56,7 @@ class Chat{
       {
 
 
-        $TabFinal[$this->NameMatch[$i]][] = [($message['firstname']) => ($message['message'])];
+        $TabFinal[$this->NameMatch[$i] . "*" . $key][] = [($message['firstname']) => ($message['message'])];
         $j++;
       }
 

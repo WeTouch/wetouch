@@ -10,6 +10,9 @@ class chatValidator {
     $q = array('SendId'=>$_SESSION['id'], 'ReceiveId'=>$idChat, 'message'=>$msg);
     $req = $cnx->prepare("INSERT INTO t_chat (SendId, ReceiveId, message) VALUES (:SendId,:ReceiveId,:message)");
     $req->execute($q);
+    $q = array('SendId'=>$_SESSION['id'], 'ReceiveId'=>$idChat, 'message'=>"No msg yet");
+    $req = $cnx->prepare("DELETE FROM t_chat WHERE ((SendId=:SendId OR SendId=:ReceiveId) AND (ReceiveId=:SendId OR ReceiveId=:ReceiveId) AND message=:message)");
+    $req->execute($q);
   }
 
 }
