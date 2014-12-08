@@ -9,15 +9,39 @@ $age = floor($ageSec / (365*24*60*60));
 	<div id="info">
 		<h3><?php echo $this->data['people']['firstname'] . " - " .  $age . " ans" ?></h3>
 	</div>
-	<img onmouseover="showButton()"  onmouseout="hideButton()" id="imgTind" src="images/<?php echo $this->data['people']['photo_id'] ?>" style="width:200px;"/>
-	<form method="post" enctype="multipart/form-data">
-		<button onmouseover="showButton()"  onmouseout="hideButton()" type="submit" name="beau" value="1"  class="tindbtn preview btn btn-success" ><i class="glyphicon glyphicon-heart"></i></button>
-		<button onmouseover="showButton()"  onmouseout="hideButton()" type="submit" name="beau" value="0" class="tindbtn preview btn btn-danger" ><i class=" icon-remove"></i></button>
-	</form>
+	<div id="contentPortofolio">
+		<div id="contentcontent">
+			<section id="portfolio" class="container lol">
+		        <ul class="portfolio-items col-3">
+		            <li class="portfolio-item joomla bootstrap">
+		                <div class="item-inner">
+		                    <img src="images/16/31.jpg" alt="">
+		                    <h5></h5>
+		                    <div class="overlay">  
+		                        <form method="post" enctype="multipart/form-data" class="preview">  
+									<button onmouseover="showButton()"  onmouseout="hideButton()" type="submit" name="beau" value="1"  class="preview btn btn-success" ><i class="glyphicon glyphicon-heart"></i></button>
+									<button onmouseover="showButton()"  onmouseout="hideButton()" type="submit" name="beau" value="0" class="preview btn btn-danger" ><i class=" icon-remove"></i></button>
+								</form>   
+		                    </div>           
+		                </div>           
+		            </li><!--/.portfolio-item-->             
+		        </ul>
+			</section>
+		</div>
+	</div>
+
 	<div id="info">
 	<h5> <?= $this->data['people']['description'] ?></h5>
 	</div>
 </div>
+
+
+
+
+
+
+
+
 
 
 <script>

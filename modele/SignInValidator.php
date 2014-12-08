@@ -17,7 +17,7 @@ class SignInValidator {
         $preference = "homme";
       }
       $q = array('nom'=>$nom, 'prenom'=>$prenom, 'email'=>$email, 'ddn'=>$ddn, 'genre'=>$genre, 'preference'=>$preference, 'password'=>$password);
-      $req = $cnx->prepare("INSERT INTO t_membres (email, firstname, name, dob, preference, genre, password) VALUES (:email,:prenom, :nom, :ddn, :preference, :genre, :password)");
+      $req = $cnx->prepare("INSERT INTO t_membres (email, firstname, name, dob,  preference, genre, password,photo_id) VALUES (:email,:prenom, :nom, :ddn, :preference, :genre, :password,'homme.jpg')");
       $req->execute($q);
       return True;
     }
