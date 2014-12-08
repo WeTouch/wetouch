@@ -1139,6 +1139,30 @@ border : 1px solid black;
 footer
 {
   position : absolute;
-  bottom : 0;
+  bottom : -500px;
   width : 100%
+}
+
+
+#profil
+{
+  width : 1000px;
+}
+
+#leftP
+{
+  width : 500px;
+
+float : left;
+padding : 20px;
+}
+
+#rightP
+{
+  width : 500px;
+
+  float : left;
+  padding : 20px;
+  padding-left : 40px;
+
 }
