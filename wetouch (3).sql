@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 03 Décembre 2014 à 16:42
+-- Généré le :  Lun 08 Décembre 2014 à 09:21
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `t_membres` (
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `ix_photo` (`photo_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Contenu de la table `t_membres`
@@ -84,7 +84,9 @@ INSERT INTO `t_membres` (`id`, `email`, `firstname`, `name`, `dob`, `position`, 
 (6, 'jules.jules@jules.fr', 'a', 'a', '0123-12-13', '', NULL, '', 'Monsieur', '', '', '$2y$11$wPYk29VSyKi7f5zUFzI0XuDhKzRvnQhAYUeDN4iEt.z5Zm8APtxB6'),
 (12, 'db@hotmail.fr', 'Damien', 'Bellet', '1995-01-20', '', NULL, '', 'homme', '', '', 'azerty'),
 (13, '', 'de', 'az', '0005-02-12', '', NULL, '', 'homme', '', '', 'zb'),
-(14, 'db.db.db@hotmail.fr', 'Damien', 'Bellet', '1888-01-20', '', 'femme', '', 'homme', '', '', 'xd');
+(14, 'db.db.db@hotmail.fr', 'Damien', 'Bellet', '1888-01-20', '', 'femme', '', 'homme', '', '', 'xd'),
+(15, 'sarah.lartigau@hotmail.fr', 'Sarah', 'Lartigau', '1997-03-13', '', 'homme', '', 'femme', 'Je m''appelle Sarah !', '15/20.jpg', 'zboubdeouf'),
+(16, 'emma.tjulander@hotmail.fr', 'Emma', 'Tjulander', '1997-01-13', '', 'homme', '', 'femme', '', '16/31.jpg', 'zboubdeouf');
 
 -- --------------------------------------------------------
 
@@ -97,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `t_photo` (
   `path` varchar(255) NOT NULL,
   `id_membres` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
 
 --
 -- Contenu de la table `t_photo`
@@ -107,7 +109,10 @@ INSERT INTO `t_photo` (`id`, `path`, `id_membres`) VALUES
 (1, 'photo.jpg', 4),
 (2, 'zboub.jpg', 4),
 (6, '6/1.jpg', 6),
-(19, '11/18.jpg', 11);
+(31, '16/31.jpg', 16),
+(19, '11/18.jpg', 11),
+(30, '16/30.jpg', 16),
+(29, '15/20.jpg', 15);
 
 -- --------------------------------------------------------
 
@@ -129,21 +134,20 @@ CREATE TABLE IF NOT EXISTS `t_result` (
 --
 
 INSERT INTO `t_result` (`voter`, `vote`, `result`) VALUES
-(1, 6, 1),
+(16, 13, 0),
 (6, 1, 1),
 (1, 3, 0),
-(1, 5, 1),
 (1, 2, 1),
 (2, 1, 1),
 (1, 4, 1),
 (4, 1, 1),
 (12, 1, 1),
-(1, 12, 1),
-(1, 7, 0),
-(1, 8, 0),
+(16, 1, 1),
+(16, 12, 0),
+(16, 11, 0),
 (11, 1, 0),
-(1, 13, 0),
-(1, 14, 0),
+(1, 15, 0),
+(1, 16, 1),
 (11, 2, 0),
 (11, 3, 0),
 (11, 4, 0),
@@ -163,7 +167,8 @@ INSERT INTO `t_result` (`voter`, `vote`, `result`) VALUES
 (12, 7, 1),
 (12, 6, 1),
 (12, 13, 1),
-(12, 14, 1);
+(12, 14, 1),
+(16, 14, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
