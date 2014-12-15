@@ -10,6 +10,8 @@ $age = floor($ageSec / (365*24*60*60));
 		<h3><?php echo $this->data['people']['firstname'] . " - " .  $age . " ans"; ?></h3>
 		<h6><?php echo $this->data['people']['description']; ?></h6>
 	</div>
+
+	<div id="mg">
 	<div id="contentPortofolio">
 		<div id="contentcontent">
 			<section id="portfolio" class="container lol">
@@ -30,11 +32,13 @@ $age = floor($ageSec / (365*24*60*60));
 			</section>
 		</div>
 	</div>
+</div>
 
 	<div id="infoC">
 	<h5>	<?= $this->data['info']['taille'];?> </h5>
 
 	</div>
+
 </div>
 
 

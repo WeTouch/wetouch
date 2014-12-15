@@ -1180,15 +1180,13 @@ padding : 20px;
 
 #infoC
 {
-float : left;
 width : 100px;
 background-color : blue;
 }
 
-
-
-#people img
+#mg
 {
+
   float : left;
-width : 200px;
+
 }
