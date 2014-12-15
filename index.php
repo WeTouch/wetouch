@@ -57,6 +57,10 @@ $app = new \Slim\Slim([
       $app->render('login.php');
       $app->render('signin.php');
     }
+    else
+    {      
+      $app->redirect($app->urlFor('index'));
+    }
   });
 
   $app->get('/mypictures',function() use ($app){
