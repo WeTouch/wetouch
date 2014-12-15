@@ -1190,3 +1190,8 @@ background-color : blue;
   float : left;
 
 }
+
+.Chat
+{
+  display : none;
+}
