@@ -1167,3 +1167,28 @@ padding : 20px;
   padding-left : 40px;
 
 }
+
+#people
+{
+  margin : 0 auto;
+  width : 1000px;
+  background-color : green;
+  height : 300px;
+
+
+}
+
+#infoC
+{
+float : left;
+width : 100px;
+background-color : blue;
+}
+
+
+
+#people img
+{
+  float : left;
+width : 200px;
+}

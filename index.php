@@ -119,7 +119,8 @@ $app = new \Slim\Slim([
   {
     $is_match->displayMatch();
     $people = $is_match->displayMatch();
-    $app->render('tind.php',array("people"=>$people));
+    $info = $is_match->displayInfo();
+    $app->render('tind.php',array("people"=>$people,"info"=>$info));
 
   }
   else

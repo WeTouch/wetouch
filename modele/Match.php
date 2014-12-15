@@ -38,6 +38,15 @@ class Match{
 		return $fet;
 
   }
+
+	public function displayInfo()
+	{
+		require 'class/bdd.php';
+		$req = $cnx->prepare("SELECT * FROM t_informations WHERE id=:id");
+		$req->execute(array('id'=>$this->idNotMatchYet[0]));
+		$fetinfo = $req->fetch();
+		return $fetinfo;
+	}
   public function vote()
   {
     require 'class/bdd.php';
@@ -47,7 +56,7 @@ class Match{
     $matchyet = $req2->fetch();
     if($matchyet && $_POST['beau'])
     {
-      $req3 = $cnx->prepare("INSERT INTO t_chat (SendId,ReceiveId,message) VALUES(:id,:idVote,'No msg Yet')");
+      $req3 = $cnx->prepare("INSERT INTO t_chat (SendId,ReceiveId,message) VALUES(:id,:idVote,'No msg yet')");
       $req3->execute(array('id'=>$_SESSION['id'],'idVote'=>$this->idNotMatchYet[0]));
     }
 

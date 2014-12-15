@@ -16,7 +16,7 @@ echo "<h3> Discussion avec " . substr($perso,0,$pos) . "</h3><br/>";
   {
     foreach($message as $sender => $msg)
     {
-
+			
     if ($msg == "No msg yet")
     {
     	echo "<h5> Pas encore de message ! </h5>";

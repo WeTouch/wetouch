@@ -8,6 +8,7 @@ $age = floor($ageSec / (365*24*60*60));
 <div id="people">
 	<div id="info">
 		<h3><?php echo $this->data['people']['firstname'] . " - " .  $age . " ans"; ?></h3>
+		<h6><?php echo $this->data['people']['description']; ?></h6>
 	</div>
 	<div id="contentPortofolio">
 		<div id="contentcontent">
@@ -17,21 +18,22 @@ $age = floor($ageSec / (365*24*60*60));
 		                <div class="item-inner">
 		                    <img src="images/<?php echo $this->data['people']['photo_id'];?>" alt="">
 		                    <h5></h5>
-		                    <div class="overlay">  
-		                        <form method="post" enctype="multipart/form-data" class="preview">  
+		                    <div class="overlay">
+		                        <form method="post" enctype="multipart/form-data" class="preview">
 									<button onmouseover="showButton()"  onmouseout="hideButton()" type="submit" name="beau" value="1"  class="preview btn btn-success" ><i class="glyphicon glyphicon-heart"></i></button>
 									<button onmouseover="showButton()"  onmouseout="hideButton()" type="submit" name="beau" value="0" class="preview btn btn-danger" ><i class=" icon-remove"></i></button>
-								</form>   
-		                    </div>           
-		                </div>           
-		            </li><!--/.portfolio-item-->             
+								</form>
+		                    </div>
+		                </div>
+		            </li><!--/.portfolio-item-->
 		        </ul>
 			</section>
 		</div>
 	</div>
 
-	<div id="info">
-	<h5> <?= $this->data['people']['description'] ?></h5>
+	<div id="infoC">
+	<h5>	<?= $this->data['info']['taille'];?> </h5>
+
 	</div>
 </div>
 
