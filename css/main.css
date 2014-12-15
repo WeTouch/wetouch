@@ -1092,7 +1092,10 @@ ul.faq li > div h3 {
 {
   text-align : center;
 }
-
+.content
+{
+  min-height: 900px;
+}
 #profil
 {
   width : 1200px;
@@ -1139,15 +1142,13 @@ border : 1px solid black;
 footer
 {
 
-  position : fixed;
-  bottom : 0;
   width : 100%
 }
 
 
 #profil
 {
-  width : 1000px;
+  min-width : 900px;
 }
 
 #leftP
@@ -1161,7 +1162,6 @@ padding : 20px;
 #rightP
 {
   width : 500px;
-
   float : left;
   padding : 20px;
   padding-left : 40px;
