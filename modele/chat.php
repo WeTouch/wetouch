@@ -49,8 +49,7 @@ class Chat{
 
 
 
-      echo $key .'<br/>';
-      $req = $cnx->prepare("SELECT c.message,m.firstname,m.id FROM t_chat c , t_membres m WHERE ((c.SendId =:id AND c.ReceiveId = :key) OR (c.SendId=:key AND c.ReceiveId = :id)) AND c.SendId = m.id  ");
+      $req = $cnx->prepare("SELECT c.message,m.firstname,m.id FROM t_chat c , t_membres m WHERE ((c.SendId =:id AND c.ReceiveId = :key) OR (c.SendId=:key AND c.ReceiveId = :id)) AND c.SendId = m.id   ");
       $req->execute(array('id'=>$_SESSION['id'],'key'=>$key));
       while ($message=$req->fetch())
       {
