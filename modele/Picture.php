@@ -19,6 +19,20 @@ class Picture {
     }
     return $this->tabPath;
   }
+  public function getPictureId($id)
+  {
+    require 'class/bdd.php';
+    $array  = array();
+    $sql = 'SELECT path FROM t_photo WHERE id_membres=:id';
+    $req = $cnx->prepare($sql);
+    $req->execute(array('id'=>$id));
+    while($moi= $req->fetch())
+    {
+      $array[] = $moi['path'];
+
+    }
+    return $array;
+  }
   public function delete()
   {
     require 'class/bdd.php';

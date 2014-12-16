@@ -1094,7 +1094,7 @@ ul.faq li > div h3 {
 }
 .content
 {
-  min-height: 900px;
+  min-height: 800px;
 }
 #profil
 {
@@ -1122,8 +1122,8 @@ ul.faq li > div h3 {
 
 #people
 {
-  position : relative;
   text-align : center;
+  margin-top: 50px;
 }
 
 .tindbtn
@@ -1141,14 +1141,15 @@ border : 1px solid black;
 
 footer
 {
-
+  float:left;
+  margin-top:150px;
   width : 100%
 }
 
 
 #profil
 {
-  min-width : 900px;
+  min-width : 800px;
 }
 
 #leftP
@@ -1171,9 +1172,8 @@ padding : 20px;
 #people
 {
   margin : 0 auto;
-  width : 1000px;
-  background-color : green;
-  height : 300px;
+  width : 80%;
+  
 
 
 }
@@ -1181,12 +1181,17 @@ padding : 20px;
 #infoC
 {
 width : 100px;
-background-color : blue;
 }
 
-#mg
+#contentPortofolio
 {
-
-  float : left;
-
+  width: 70%;
+  min-height: 500px;
+  float: right;
+}
+#contentInfos
+{
+  width: 30%;
+  height: 500px;
+  text-align: justify;
 }

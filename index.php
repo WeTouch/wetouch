@@ -124,7 +124,10 @@ $app = new \Slim\Slim([
     $is_match->displayMatch();
     $people = $is_match->displayMatch();
     $info = $is_match->displayInfo();
-    $app->render('tind.php',array("people"=>$people,"info"=>$info));
+    $pic = new Picture();
+    $pict = array();
+    $pict = $pic->getPictureId($info['id']);
+    $app->render('tind.php',array("people"=>$people,"info"=>$info,"img"=>$pict));
 
   }
   else
@@ -144,8 +147,16 @@ $app = new \Slim\Slim([
 $app->get('/chat',function() use ($app){
   $match = new chat();
   $match->getTalker();
-  $tabMsg = $match->displayMatchForChat();
-  $app->render('chat.php',array("tabMsg"=>$tabMsg));
+  if(sizeof($match->getTalker()[0])==0)
+  {
+    $app->render('NoMatchYet.php');
+  }
+  else
+  {
+    $tabMsg = $match->displayMatchForChat();
+    $app->render('chat.php',array("tabMsg"=>$tabMsg));
+  }
+
 })->name('chat');
 
 $app->post('/chat',function() use ($app)
