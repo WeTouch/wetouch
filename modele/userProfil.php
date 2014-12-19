@@ -1,5 +1,6 @@
 <?php
-class getProfil {
+class userProfil
+{
   private $tabInformations;
   private $tabMoreInformations;
   public function __construct()
@@ -7,28 +8,28 @@ class getProfil {
     $this->tabInformations=array();
     $this->tabMoreInformations=array();
   }
-  public function getInformations()
+  public function getUserInformations($id)
   {
     require 'class/bdd.php';
     $sql = 'SELECT * FROM t_membres WHERE id=:id';
     $req = $cnx->prepare($sql);
-    $req->execute(array('id'=>$_SESSION["id"]));
+    $req->execute(array('id'=>$id));
     while($info= $req->fetch())
     {
       $this->tabInformations[] = array("email" => $info['email'], "firstname" => $info['firstname'], "name" => $info['name'],"preference" =>$info['preference'],
-       "dob" => $info['dob'],"position" => $info['position'], "genre" => $info['genre'], "description" => $info['description'],
+      "dob" => $info['dob'],"position" => $info['position'], "genre" => $info['genre'], "description" => $info['description'],
       "photo_id" => $info['photo_id']);
     }
     return $this->tabInformations;
 
   }
 
-  public function getMoreInformations()
+  public function getUserMoreInformations($id)
   {
     require 'class/bdd.php';
     $sql = 'SELECT * FROM t_informations WHERE id=:id';
     $req = $cnx->prepare($sql);
-    $req->execute(array('id'=>$_SESSION["id"]));
+    $req->execute(array('id'=>$id));
     while($info= $req->fetch())
     {
       $this->tabMoreInformations[] = array("taille" => $info['taille'], "poids" => $info['poids'], "couleurCheveux" => $info['couleurCheveux'],"couleurYeux" =>$info['couleurYeux'],
@@ -38,16 +39,8 @@ class getProfil {
     return $this->tabMoreInformations;
   }
 
-  /*  public function getPictureProfil()
-  {
-  require 'class/bdd.php';
-  $sql = 'SELECT photo_id FROM t_membres WHERE id=:id';
-  $req = $cnx->prepare($sql);
-  $req->execute(array('id'=>$_SESSION["id"]));
-  $photo = $req->fetch();
-
-} */
 }
+
 
 
 ?>

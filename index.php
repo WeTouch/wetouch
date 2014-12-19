@@ -14,7 +14,7 @@ require 'modele/Picture.php';
 require 'modele/getProfil.php';
 require 'modele/ModifProfilValidator.php';
 require 'modele/ModifProfilMoreValidator.php';
-
+require 'modele/userProfil.php';
 session_start();
 \Slim\Slim::registerAutoloader();
 
@@ -58,7 +58,7 @@ $app = new \Slim\Slim([
       $app->render('signin.php');
     }
     else
-    {      
+    {
       $app->redirect($app->urlFor('index'));
     }
   });
@@ -204,6 +204,19 @@ $app->post('/ModifprofilMore', function() use ($app)
   $profil->verifProfilMore($_POST['taille'],$_POST['poids'],$_POST['couleurCheveux'],$_POST['couleurYeux'],$_POST['bijoux'],$_POST['fumeur'],$_POST['origine'],$_POST['formation'],$_POST['situation'],$_POST['statut'],$_POST['cherche'],$_POST['libre']);
   $app->redirect($app->urlFor('profil'));
 });
+
+$app->get('/userProfil',function() use ($app){
+ $userInformations = new userProfil();
+ $tabUserInfromations=array();
+ $tabUserMoreInformations=array();
+ $tabUserInformations = $userInformations->getUserInformations($_GET['id']);
+ $tabUserMoreInformations = $userInformations->getUserMoreInformations($_GET['id']);
+ $picUser = new Picture();
+ $pictUser = array();
+ $pictUser = $picUser->getPictureId($_GET['id']);
+ $app->render('userProfil.php',array("tabUser" => $tabUserInformations,"tabUserMore" => $tabUserMoreInformations,"imgUser"=>$pictUser));
+
+})->name('userProfil');
 
   $app->render('header.php', compact('app'));
   $app->run();
