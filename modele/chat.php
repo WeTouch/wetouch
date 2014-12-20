@@ -15,7 +15,7 @@ class Chat{
     $req->execute(array('id'=>$_SESSION['id']));
     while($idMatch=$req->fetch())
     {
-      $this->MatchYet[]=$idMatch['vote'];
+      $this->MatchYet[]=$idMatch['vote'] . '~' .  $idMatch['photo_id'];
       $this->NameMatch[]=$idMatch['firstname'];
     }
 

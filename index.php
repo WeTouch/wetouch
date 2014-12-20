@@ -147,13 +147,14 @@ $app = new \Slim\Slim([
 $app->get('/chat',function() use ($app){
   $match = new chat();
   $match->getTalker();
+  $tabMsg = $match->displayMatchForChat();
   if(sizeof($match->getTalker()[0])==0)
   {
     $app->render('NoMatchYet.php');
   }
   else
   {
-    $tabMsg = $match->displayMatchForChat();
+
     $app->render('chat.php',array("tabMsg"=>$tabMsg));
   }
 

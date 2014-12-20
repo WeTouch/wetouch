@@ -1173,7 +1173,7 @@ padding : 20px;
 {
   margin : 0 auto;
   width : 80%;
-  
+
 
 
 }
@@ -1196,7 +1196,51 @@ width : 100px;
   text-align: justify;
 }
 
+/*.Chat
+{
+display : none;
+padding-left : 100px;
+float : right;
+width : 500px;
+height : 100px;
+background-color : green;
+}*/
+
 .Chat
 {
   display : none;
+
+  width : 500px;
+  float : right;
+  position : relative;
+  top : -50px;
+}
+
+
+.discussion
+{
+  float : left;
+  position : relative;
+}
+
+.discussion img
+{
+  padding-left : 10px;
+  width : 100px;
+}
+
+.all
+{
+  position : relative;
+  top : 50px;
+  padding: 20px;
+  width : 1000px;
+  height : 100px;
+  margin : 0 auto;
+
+}
+
+#titreChat
+{
+  text-align : center;
 }
