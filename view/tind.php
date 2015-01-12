@@ -22,14 +22,29 @@ $age = floor($ageSec / (365*24*60*60));
       $count +=1;
       if($count==1)
       {
-        echo '<div class="item active"><img alt="" title="" src="images/'.$key.'"></div>';
+        echo '
+                <div class="portfolio-item joomla item-inner item active">
+                  <img src="images/'.$key.'" alt="">
+                  <div class="overlay">  
+                    <form method="post" enctype="multipart/form-data" class="preview">  
+                      <button onmouseover="showButton()" onmouseout="hideButton()" type="submit" name="beau" value="1" class="preview btn btn-success"><i class="glyphicon glyphicon-heart"></i></button>
+                      <button onmouseover="showButton()" onmouseout="hideButton()" type="submit" name="beau" value="0" class="preview btn btn-danger"><i class=" icon-remove"></i></button>
+                    </form>   
+                  </div>           
+                </div>           
+              ';
       }
-      else{
-      ?>
-
-    <div class="item">
-      <img alt="" title="" src="images/<?= $key; ?>">
-    </div>
+      else
+      { ?>
+        <div class=" portfolio-item joomla item">
+          <img alt="" title="" src="images/<?= $key; ?>">
+          <div class="overlay">  
+            <form method="post" enctype="multipart/form-data" class="preview">  
+              <button onmouseover="showButton()" onmouseout="hideButton()" type="submit" name="beau" value="1" class="preview btn btn-success"><i class="glyphicon glyphicon-heart"></i></button>
+              <button onmouseover="showButton()" onmouseout="hideButton()" type="submit" name="beau" value="0" class="preview btn btn-danger"><i class=" icon-remove"></i></button>
+            </form>   
+          </div> 
+        </div>
     <?php }} ?>
   </div>
   <!-- Indicators -->
