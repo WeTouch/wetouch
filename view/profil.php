@@ -13,7 +13,7 @@
 
     <h5><b>Genre : </b> <?= $this->data['tab']['0']['preference'] ?></h5>
 
-    <a href="<?php echo $app->urlFor('Modifprofil');?>">Modifier mes informations personnelles</a>
+    <a href="<?php echo $app->urlFor('Modifprofil');?>" class="btn btn-default">Modifier mes informations personnelles</a>
   </div>
   <div id="rightP">  <h3> A propos de moi </h3>
   <h5><b>Taille : </b> <?= $this->data['tabMore']['0']['taille'] ?> cm</h5>
@@ -28,6 +28,6 @@
   <h5><b>Statut sentimental : </b> <?= $this->data['tabMore']['0']['statut'] ?></h5>
   <h5><b>Que cherches-tu ? : </b> <?= $this->data['tabMore']['0']['cherche'] ?></h5>
   <h5><b>Que fais-tu durant ton temps libre ? : </b> <?= $this->data['tabMore']['0']['libre'] ?></h5>
-  <a href="<?php echo $app->urlFor('ModifprofilMore');?>">Modifier mes informations</a>
+  <a href="<?php echo $app->urlFor('ModifprofilMore');?>" class="btn btn-default">Modifier mes informations</a>
   </div>
 </div>

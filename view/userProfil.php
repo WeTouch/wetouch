@@ -88,12 +88,12 @@ if (!empty($this->data['tabUser']['0']))
 <?php }
 else
 {
-  echo "<h5>Utilisateur introuvable !</h5>";
+  $app->render("NoUser.php");
 }
 }
 else
 {
-  echo "<h5>Vous n'avez pas match avec cette personne !</h5>";
+  $app->render("NoUser.php");
 }?>
 
 
