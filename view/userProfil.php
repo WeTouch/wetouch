@@ -1,5 +1,14 @@
-<?php if (!empty($this->data['tabUser']['0']))
-{ ?>
+<?php
+$idpers =  $_GET['id'];
+if (in_array($idpers, $this->data['allMatch']))
+{
+
+if (!empty($this->data['tabUser']['0']))
+{
+
+
+  ?>
+
 <div id="profil">
   <h1> Page profil  de <?= $this->data['tabUser']['0']['firstname'] . ' ' . $this->data['tabUser']['0']['name']  ?></h1>
 
@@ -43,6 +52,7 @@
               </ol>
             </div>
           </div>
+
   <div id="leftP">
     <h3>Informations personnelles </h3>
     <h5><b>Email : </b> <?= $this->data['tabUser']['0']['email'] ?></h5>
@@ -79,6 +89,11 @@
 else
 {
   echo "<h5>Utilisateur introuvable !</h5>";
+}
+}
+else
+{
+  echo "<h5>Vous n'avez pas match avec cette personne !</h5>";
 }?>
 
 

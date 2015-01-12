@@ -215,7 +215,10 @@ $app->get('/userProfil',function() use ($app){
  $picUser = new Picture();
  $pictUser = array();
  $pictUser = $picUser->getPictureId($_GET['id']);
- $app->render('userProfil.php',array("tabUser" => $tabUserInformations,"tabUserMore" => $tabUserMoreInformations,"imgUser"=>$pictUser));
+ $match = new Match();
+ $match2 = array();
+ $match2 = $match->listMatch();
+ $app->render('userProfil.php',array("tabUser" => $tabUserInformations,"tabUserMore" => $tabUserMoreInformations,"imgUser"=>$pictUser,"allMatch" => $match2));
 
 })->name('userProfil');
 
