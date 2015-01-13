@@ -14,7 +14,7 @@ class SignInValidator {
     {
       $tabMail[]=$mail['email'];
     }
-    
+
     if(in_array($email,$tabMail ))
     {
        $msgerreur = "email déjà utilisé";
@@ -39,7 +39,7 @@ class SignInValidator {
       {
         $preference = "homme";
       }
-      $q = array('nom'=>$nom, 'prenom'=>$prenom, 'email'=>$email, 'ddn'=>$ddn, 'genre'=>$genre, 'preference'=>$preference, 'password'=>$password);
+      $q = array('nom'=>$nom, 'prenom'=>$prenom, 'email'=>$email, 'ddn'=>$ddn, 'genre'=>$genre, 'preference'=>$preference, 'password'=>md5($password));
       $req = $cnx->prepare("INSERT INTO t_membres (email, firstname, name, dob,  preference, genre, password,photo_id) VALUES (:email,:prenom, :nom, :ddn, :preference, :genre, :password,'homme.jpg')");
       $req->execute($q);
 

@@ -7,7 +7,7 @@ class loginValidator {
   {
     require 'class/bdd.php';
     if(!empty($_POST)){
-      $tab = array('email'=>$email, 'password'=>$password);
+      $tab = array('email'=>$email, 'password'=>md5($password));
       $sql = 'SELECT email,password,id,firstname,name,photo_id FROM t_membres WHERE email = :email AND password = :password';
       $req = $cnx->prepare($sql);
       $req->execute($tab);
