@@ -27,31 +27,31 @@ class Match{
     else {
       return false;
 		}
+	}
+
+
+
+	public function listMatch()
+	{
+		require 'class/bdd.php';
+		$req = $cnx->prepare("SELECT id,genre
+		FROM t_membres m
+		WHERE id!=:id
+		AND id  IN (SELECT vote FROM t_result WHERE voter=:id)
+		AND id  IN (SELECT voter FROM t_result WHERE vote =:id)");
+		$req->execute(array('id'=>$_SESSION['id']));
+
+		while($idNot=$req->fetch())
+		{
+			$this->idNotMatchYet[]=$idNot['id'];
 		}
-
-
-
-			public function listMatch()
-			{
-				require 'class/bdd.php';
-				$req = $cnx->prepare("SELECT id,genre
-				FROM t_membres m
-				WHERE id!=:id
-				AND id  IN (SELECT vote FROM t_result WHERE voter=:id)
-				AND id  IN (SELECT voter FROM t_result WHERE vote =:id)");
-				$req->execute(array('id'=>$_SESSION['id']));
-
-				while($idNot=$req->fetch())
-				{
-					$this->idNotMatchYet[]=$idNot['id'];
-				}
-				if(isset($this->idNotMatchYet[0]))
-				{
-					return $this->idNotMatchYet;
-				}
-				else {
-					return false;
-				}
+		if(isset($this->idNotMatchYet[0]))
+		{
+			return $this->idNotMatchYet;
+		}
+		else {
+			return false;
+		}
 
 
 
@@ -63,7 +63,6 @@ class Match{
     $req->execute(array('id'=>$this->idNotMatchYet[0]));
     $fet = $req->fetch() ;
 		return $fet;
-
   }
 
 	public function displayInfo()

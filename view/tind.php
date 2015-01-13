@@ -17,7 +17,6 @@ $age = floor($ageSec / (365*24*60*60));
   <!-- Wrapper for slides -->
   <div class="carousel-inner cont-slider">
     <?php $count = 0;
-
     foreach ($this->data['img'] as $key) {
       $count +=1;
       if($count==1)

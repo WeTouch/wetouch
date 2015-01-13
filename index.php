@@ -126,7 +126,7 @@ $app = new \Slim\Slim([
     $info = $is_match->displayInfo();
     $pic = new Picture();
     $pict = array();
-    $pict = $pic->getPictureId($info['id']);
+    $pict = $pic->getPictureId($people['id']);
     $app->render('tind.php',array("people"=>$people,"info"=>$info,"img"=>$pict));
 
   }

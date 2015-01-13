@@ -23,14 +23,24 @@ class Picture {
   {
     require 'class/bdd.php';
     $array  = array();
-    $sql = 'SELECT DISTINCT p.path,m.photo_id FROM t_photo p JOIN t_membres m ON m.id=p.id_membres WHERE id_membres=:id';
+    $sql = 'SELECT photo_id FROM t_membres WHERE id=:id';
+    $pic = $cnx->prepare($sql);
+    $pic->execute(array('id'=>$id));
+    $picPro= $pic->fetch();
+    $array[]=$picPro["photo_id"];
+    $sql = 'SELECT path FROM t_photo WHERE id_membres=:id';
     $req = $cnx->prepare($sql);
     $req->execute(array('id'=>$id));
-    $moi= $req->fetch();
-    $array[]= $moi['photo_id'];
     while($moi= $req->fetch())
     {
-      $array[]= $moi['path'];
+      if($moi['path'] != $picPro['photo_id'])
+      {
+        $array[]= $moi['path'];
+      }
+    }
+    if(!$array)
+    {
+      $array[]= "homme.jpg";
     }
     return $array;
   }
