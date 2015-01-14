@@ -7,30 +7,37 @@ class SignInValidator {
 
   static function verifEmail($email)
   {
-    require 'class/bdd.php';
-    $req = $cnx->prepare("SELECT email FROM t_membres");
-    $req->execute();
-    while($mail = $req->fetch())
-    {
-      $tabMail[]=$mail['email'];
-    }
-    if (!empty($tabMail))
-    {
-    if(in_array($email,$tabMail ))
-    {
-       $msgerreur = "email déjà utilisé";
-       return $msgerreur;
-    }
-    else
-    {
-      return True;
 
+    if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+      require 'class/bdd.php';
+      $req = $cnx->prepare("SELECT email FROM t_membres");
+      $req->execute();
+      while($mail = $req->fetch())
+      {
+        $tabMail[]=$mail['email'];
+      }
+      if (!empty($tabMail))
+      {
+        if(in_array($email,$tabMail ))
+        {
+          $msgerreur = "email déjà utilisé";
+          return $msgerreur;
+        }
+        else
+        {
+          return True;
+
+        }
+      }
+      {
+        return True;
+      }
     }
-  }
-  else
-  {
-    return True;
-  }
+    else {
+      $msgerreur = "email invalide";
+      return $msgerreur;
+    }
+
   }
   static function verifSignIn($nom,$prenom,$email,$ddn,$genre,$password,$verifPassword)
   {
@@ -80,15 +87,15 @@ class SignInValidator {
 
         $mailer->send($mail);
 
-      return True;
+        return True;
+      }
+      else
+      {
+        echo "Champs incomplet";
+        return False;
+      }
     }
-    else
-    {
-      echo "Champs incomplet";
-      return False;
-    }
+
   }
 
-}
-
-?>
+  ?>
