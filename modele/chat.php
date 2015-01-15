@@ -5,11 +5,9 @@ class Chat{
     $this->MatchYet=array();
     $this->NameMatch = array();
     $this->Message=array();
-
   }
   public function getTalker()
   {
-
     require 'class/bdd.php';
     $req = $cnx->prepare("SELECT r.vote, m.firstname,m.photo_id FROM t_result r, t_membres m  WHERE (r.voter =:id AND r.result = 1 AND r.vote IN ( SELECT r.voter FROM t_result r WHERE r.vote=:id AND r.result =1)) AND r.vote = m.id");
     $req->execute(array('id'=>$_SESSION['id']));
@@ -18,14 +16,11 @@ class Chat{
       $this->MatchYet[]=$idMatch['vote'] . '~' .  $idMatch['photo_id'];
       $this->NameMatch[]=$idMatch['firstname'];
     }
-
     return array($this->MatchYet , $this->NameMatch);
-
   }
 
   public function getMessage()
   {
-
     foreach ($this->MatchYet as $key) {
       $req = $cnx->prepare("SELECT message FROM t_chat WHERE (SendId =:id AND ReceiveId = :key) OR (SendId=:key AND ReceiveId = :id)");
       $req->execute(array('id'=>$_SESSION['id'],'key'=>$key));
@@ -33,8 +28,6 @@ class Chat{
       {
         $this->Message[]=$message['message'];
       }
-
-
     }
 
   }
@@ -44,23 +37,15 @@ class Chat{
     $i = 0;
     $j = 0;
     $TabFinal="";
-    foreach ($this->MatchYet as $key) {
-
-
-
-
+    foreach ($this->MatchYet as $key) 
+    {
       $req = $cnx->prepare("SELECT c.message,m.firstname,m.id FROM t_chat c , t_membres m WHERE ((c.SendId =:id AND c.ReceiveId = :key) OR (c.SendId=:key AND c.ReceiveId = :id)) AND c.SendId = m.id   ");
       $req->execute(array('id'=>$_SESSION['id'],'key'=>$key));
       while ($message=$req->fetch())
       {
-
-
-
         $TabFinal[$this->NameMatch[$i] . "*" . $key][] = [($message['firstname']) => ($message['message'])];
-
         $j++;
       }
-
       $i++;
       /*    var_dump($this->MatchYet);die;
       echo "<h4>Discussion avec " . $this->NameMatch[$i] . "</h4>";
@@ -100,16 +85,9 @@ echo 'Envoyer le premier message! <form method="post" action="#">
 </form>';
 }
 $i++; */
-
-}
-
-return $TabFinal;
-
-}
-
-
-
-
+    }
+    return $TabFinal;
+  }
 }
 
 ?>

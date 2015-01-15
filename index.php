@@ -2,7 +2,6 @@
 
 //Require
 require 'class/Slim/Slim.php';
-require 'class/test.php';
 require 'class/bdd.php';
 require_once ("/autoload.inc.php");
 
@@ -15,7 +14,6 @@ $app = new \Slim\Slim([
   'templates.path' => 'view'
   ]);
 
-  $app->test= new Test();
 
   // routes
   $app->get('/',function() use ($app){

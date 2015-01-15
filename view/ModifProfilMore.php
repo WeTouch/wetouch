@@ -17,8 +17,8 @@
   </div>
   <div id="rightP">  <h3> A propos de moi </h3>
     <form action="" method="POST">
-    <h5><b>Taille : </b><input type="text" name="taille" value=" <?php if(sizeof($this->data['tabMore'])) { echo $this->data['tabMore']['0']['taille']; } ?>"> cm</h5>
-    <h5><b>Poids : </b> <input type="text" name="poids" value=" <?php if(sizeof($this->data['tabMore'])) { echo $this->data['tabMore']['0']['poids']; } ?>"> kg</h5>
+    <h5><b>Taille : </b><input type="number" name="taille" value="<?php if(sizeof($this->data['tabMore'])) { echo $this->data['tabMore']['0']['taille']; } ?>"> cm</h5>
+    <h5><b>Poids : </b> <input type="number" name="poids" value="<?php if(sizeof($this->data['tabMore'])) { echo $this->data['tabMore']['0']['poids']; } ?>"> kg</h5>
     <h5><b>Couleur des cheveux : </b> <input type="text" name="couleurCheveux" value=" <?php if(sizeof($this->data['tabMore'])) { echo $this->data['tabMore']['0']['couleurCheveux']; } ?>"></h5>
     <h5><b>Couleur des yeux : </b><input type="text" name="couleurYeux" value=" <?php if(sizeof($this->data['tabMore'])) { echo $this->data['tabMore']['0']['couleurYeux']; } ?>"></h5>
     <h5><b>Bijoux corporelles : </b> <input type="text" name="bijoux" value=" <?php if(sizeof($this->data['tabMore'])) { echo $this->data['tabMore']['0']['bijoux']; } ?>"></h5>

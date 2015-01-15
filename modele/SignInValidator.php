@@ -50,6 +50,10 @@ class SignInValidator {
       $req->execute($q);
 
 
+      $info = $cnx->prepare("INSERT INTO t_informations (id) VALUES (:id)");
+      $info->execute(array('id'=>$cnx->lastInsertId()));
+
+
 
       $mailer = new Nette\Mail\SmtpMailer(array(
         'host' => 'smtp.gmail.com',
