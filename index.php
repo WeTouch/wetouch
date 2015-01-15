@@ -134,6 +134,7 @@ $app->get('/signinOpen',function() use ($app){
     $pict = array();
     $pict = $pic->getPictureId($people['id']);
     $app->render('tind.php',array("people"=>$people,"info"=>$info,"img"=>$pict));
+    $_SESSION['match']=0;
 
   }
   else

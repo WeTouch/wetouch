@@ -1283,3 +1283,15 @@ background-color : green;
 {
   opacity : 0.8;
 }
+
+
+#myModal
+{
+  text-align : center;
+}
+
+#myModal a
+{
+  text-decoration : none;
+  border : none;
+}
