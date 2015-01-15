@@ -43,6 +43,7 @@
                     <li><a href="<?php echo $app->urlFor('match');?>">Match</a></li>
                     <li><a href="<?php echo $app->urlFor('chat');?>">Chat</a></li>
                     <li><a href="<?php echo $app->urlFor('logout');?>">log out</a></li>
+                    
                 </ul>
             </div> <?php }?>
         </div>

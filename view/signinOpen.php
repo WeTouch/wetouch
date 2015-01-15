@@ -17,7 +17,7 @@
                 </a>
               </h4>
             </div>
-            <div id="collapseOne1" class="panel-collapse collapse">
+            <div id="collapseOne1" class="panel-collapse in">
               <div class="panel-body">
 				<form action="signin" method="POST" >
 					<div class="form-group">

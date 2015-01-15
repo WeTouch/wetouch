@@ -20,7 +20,7 @@ class SignInValidator {
       {
         if(in_array($email,$tabMail ))
         {
-          $msgerreur = "email déjà utilisé";
+          $msgerreur = 2;
           return $msgerreur;
         }
         else
@@ -34,7 +34,7 @@ class SignInValidator {
       }
     }
     else {
-      $msgerreur = "email invalide";
+      $msgerreur = 3;
       return $msgerreur;
     }
 
