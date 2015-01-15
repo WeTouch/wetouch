@@ -10,10 +10,10 @@
 		$photo_id = substr($perso,$photo+1,strlen($perso));
 
 		echo "<div id='all'>
-				<div id = 'floatLeft'> 
+				<div id = 'floatLeft'>
 					<div class='discussion'  onclick='Afficher(this)'>
 						<div class='afid' style='display:none;'>$id</div>
-							<h3 > Discussion avec " . substr($perso,0,$pos) . "<a href='userProfil?id=" . $id . "'><img src = images/" . $photo_id . ">
+							<a href='#'><h3 > Discussion avec " . substr($perso,0,$pos) . "</a><a href='userProfil?id=" . $id . "'><img class='imgChat' src = images/" . $photo_id . ">
 								</a></h3>
 						</div><br/>
 						<div id='floatR'>

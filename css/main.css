@@ -1252,19 +1252,19 @@ background-color : green;
 
 #floatR
 {
- 
+
  float: right;
   /*display : none;*/
 }
 
 #h3Right
-{ 
+{
   position: absolute;
   right: 0;
   top: 0;
   margin-top: -40px;
   width: 450px;
-  
+
 }
 
 .entourChat
@@ -1277,4 +1277,9 @@ background-color : green;
   margin-top: 200px;
   width: 450px;
   display : none;
+}
+
+#all img:hover
+{
+  opacity : 0.8;
 }
