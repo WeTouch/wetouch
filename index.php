@@ -82,13 +82,28 @@ $app = new \Slim\Slim([
   })->name('logout');
 
 
+  
+  $app->get('/signinError2',function() use ($app){
+    $app->render('ErrorMail2.php');
+    $app->render('signinOpen.php');
+  })->name('signinError2');
+
+$app->get('/signinError3',function() use ($app){
+    $app->render('ErrorMail3.php');
+    $app->render('signinOpen.php');
+  })->name('signinError3');
+
+$app->get('/signinOpen',function() use ($app){
+    $app->render('signinOpen.php');
+  })->name('signinOpen');
+
+
   $app->get('/signin',function() use ($app){
     $app->render('signin.php');
   })->name('signin');
 
   $app->post('/signin',function() use ($app){
     $is_email = SignInValidator::verifEmail($_POST['email']);
-
     if ($is_email==1) {
     $is_signin = SignInValidator::verifSignIn($_POST['name'],$_POST['prenom'],$_POST['email'],$_POST['ddn'],$_POST['genre'],$_POST['password'],$_POST['verifpassword']);
     if ($is_signin) {
@@ -98,13 +113,15 @@ $app = new \Slim\Slim([
       $app->redirect($app->urlFor('signin'));
     }
   }
+  else if($is_email==2)
+  {
+    $app->redirect($app->urlFor('signinError2'));
+  }
   else
   {
-    echo $is_email;
+    $app->redirect($app->urlFor('signinError3'));
   }
   });
-  //exec
-
 
   $app->get('/tind',function() use ($app){
   $is_match = new Match();
