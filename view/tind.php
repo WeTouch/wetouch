@@ -1,10 +1,43 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
 <?php
 $timestamp = strtotime( $this->data['people']['dob']);
 $dateNow = time();
 $ageSec = $dateNow-$timestamp;
 $age = floor($ageSec / (365*24*60*60));
+if (isset($_SESSION['match']))
+{
+if($_SESSION['match']==1)
+{ ?>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#myModal").modal('show');
+	});
+	</script>
+<?php
+$_SESSION['match']==0;}
 
+}
 ?>
+
+<div id="myModal" class="modal fade">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h2 class="modal-title">It's a match !</h2>
+			</div>
+			<div class="modal-body">
+				<h5>Félication ! C'est un match , vous pouvez désormais discuter avec elle! </h5>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Continuez ma recherche</button>
+				<button type="button" class="btn btn-primary"><a href=" <?php echo $app->urlFor('chat'); ?>">Lui envoyez un message</a></button>
+			</div>
+		</div>
+	</div>
+</div>
 <div id="people">
 	<div id="info">
 		<h3><?php echo $this->data['people']['firstname'] . " - " .  $age . " ans"; ?></h3>
@@ -24,25 +57,25 @@ $age = floor($ageSec / (365*24*60*60));
         echo '
                 <div class="portfolio-item joomla item-inner item active">
                   <img src="images/'.$key.'" alt="">
-                  <div class="overlay">  
-                    <form method="post" enctype="multipart/form-data" class="preview">  
+                  <div class="overlay">
+                    <form method="post" enctype="multipart/form-data" class="preview">
                       <button onmouseover="showButton()" onmouseout="hideButton()" type="submit" name="beau" value="1" class="preview btn btn-success"><i class="glyphicon glyphicon-heart"></i></button>
                       <button onmouseover="showButton()" onmouseout="hideButton()" type="submit" name="beau" value="0" class="preview btn btn-danger"><i class=" icon-remove"></i></button>
-                    </form>   
-                  </div>           
-                </div>           
+                    </form>
+                  </div>
+                </div>
               ';
       }
       else
       { ?>
         <div class=" portfolio-item joomla item">
           <img alt="" title="" src="images/<?= $key; ?>">
-          <div class="overlay">  
-            <form method="post" enctype="multipart/form-data" class="preview">  
+          <div class="overlay">
+            <form method="post" enctype="multipart/form-data" class="preview">
               <button onmouseover="showButton()" onmouseout="hideButton()" type="submit" name="beau" value="1" class="preview btn btn-success"><i class="glyphicon glyphicon-heart"></i></button>
               <button onmouseover="showButton()" onmouseout="hideButton()" type="submit" name="beau" value="0" class="preview btn btn-danger"><i class=" icon-remove"></i></button>
-            </form>   
-          </div> 
+            </form>
+          </div>
         </div>
     <?php }} ?>
   </div>

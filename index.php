@@ -117,6 +117,7 @@ $app = new \Slim\Slim([
     $pict = array();
     $pict = $pic->getPictureId($people['id']);
     $app->render('tind.php',array("people"=>$people,"info"=>$info,"img"=>$pict));
+    $_SESSION['match']=0;
 
   }
   else

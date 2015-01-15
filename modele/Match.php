@@ -76,7 +76,6 @@ class Match{
   public function vote()
   {
     require 'class/bdd.php';
-
     $req2 = $cnx->prepare("SELECT * FROM t_result WHERE voter=:idVote AND vote=:id AND result=1");
     $req2->execute(array('id'=>$_SESSION['id'],'idVote'=>$this->idNotMatchYet[0]));
     $matchyet = $req2->fetch();
@@ -84,7 +83,12 @@ class Match{
     {
       $req3 = $cnx->prepare("INSERT INTO t_chat (SendId,ReceiveId,message) VALUES(:id,:idVote,'No msg yet')");
       $req3->execute(array('id'=>$_SESSION['id'],'idVote'=>$this->idNotMatchYet[0]));
+			$_SESSION['match']=1;
     }
+		else
+		{
+			$_SESSION['match']=0;
+		}
 
 
     $req = $cnx->prepare("INSERT INTO t_result(voter,vote,result) VALUES(:idVoter,:idVote,:result)");
