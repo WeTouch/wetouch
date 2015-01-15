@@ -35,7 +35,7 @@
 				}
 				else
 				{
-					echo "<h5><b>" . $sender . " : </b>" . $msg . "<br/>";
+					echo "<h5><b>" . $sender . " : </b>" .htmlentities($msg) . "<br/>";
 				}
 			}
 		}

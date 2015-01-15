@@ -1,3 +1,4 @@
+
 <section id="title">
         <div class="container">
             <div class="row">
@@ -8,7 +9,7 @@
                 </div>
             </div>
         </div>
-    </section><!--/#title--> 
+    </section><!--/#title-->
 
     <section id="portfolio" class="container">
         <ul class="portfolio-filter">
@@ -30,7 +31,7 @@
             </div>
           </div>        </ul><!--/#portfolio-filter-->
         <ul class="portfolio-items col-3">
-            <?php 
+            <?php
             $tab = array();
             $tab = $this->data['tab'];
                 foreach ($tab as $key) { ?>
@@ -38,18 +39,18 @@
                 <div class="item-inner">
                     <img src="images/<?php echo $key;?>" alt="">
                     <h5></h5>
-                    <div class="overlay">  
-                        <form method="post" enctype="multipart/form-data" class="preview">  
+                    <div class="overlay">
+                        <form method="post" enctype="multipart/form-data" class="preview">
 
-                            <button type="submit" name="fav" value="<?php echo $key; ?>" class="preview btn btn-success" ><i class=" icon-user"></i></button>     
-                            <button type="submit" name="del" value="<?php echo $key; ?>" class="preview btn btn-danger" ><i class=" icon-remove"></i></button>  
-                        </form>   
-                    </div>           
-                </div>           
+                            <button type="submit" name="fav" value="<?php echo $key; ?>" class="preview btn btn-success" ><i class=" icon-user"></i></button>
+                            <button type="submit" name="del" value="<?php echo $key; ?>" class="preview btn btn-danger" ><i class=" icon-remove"></i></button>
+                        </form>
+                    </div>
+                </div>
             </li><!--/.portfolio-item--> <?php } ?>
         </ul>
     </section><!--/#portfolio-->
 
-    
+
 </body>
 </html>
