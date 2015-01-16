@@ -5,6 +5,7 @@ class Chat{
     $this->MatchYet=array();
     $this->NameMatch = array();
     $this->Message=array();
+    $this->LastMessage=array();
   }
   public function getTalker()
   {
@@ -31,13 +32,26 @@ class Chat{
     }
 
   }
+
+  public function lastMessage()
+{
+    require 'class/bdd.php';
+    $req = $cnx->prepare("SELECT datee FROM t_chat WHERE ReceiveId = :id ORDER BY datee DESC");
+    $req->execute(array('id'=>$_SESSION['id']));
+    while($time=$req->fetch())
+    {
+      $this->LastMessage[]=$time['datee'];
+    }
+
+    return $this->LastMessage;
+  }
   public function displayMatchForChat()
   {
     require 'class/bdd.php';
     $i = 0;
     $j = 0;
     $TabFinal="";
-    foreach ($this->MatchYet as $key) 
+    foreach ($this->MatchYet as $key)
     {
       $req = $cnx->prepare("SELECT c.message,m.firstname,m.id FROM t_chat c , t_membres m WHERE ((c.SendId =:id AND c.ReceiveId = :key) OR (c.SendId=:key AND c.ReceiveId = :id)) AND c.SendId = m.id   ");
       $req->execute(array('id'=>$_SESSION['id'],'key'=>$key));

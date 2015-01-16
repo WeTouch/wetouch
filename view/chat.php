@@ -1,3 +1,7 @@
+<?php
+$_SESSION['notification']=time();
+?>
+
 <div id="titreChat"><h2> Chat (<?=count($this->data['tabMsg']);?>) </h2></div>
 <?php
 

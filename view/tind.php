@@ -16,7 +16,7 @@ if (isset($_SESSION['match']))
 		});
 		</script>
 		<?php
-		$_SESSION['match']==0;
+		$_SESSION['match']=0;
 	}
 
 }

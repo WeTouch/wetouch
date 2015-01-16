@@ -1295,3 +1295,12 @@ background-color : green;
   text-decoration : none;
   border : none;
 }
+
+#notifChat
+{
+  height : 20px;
+  position : relative;
+  left : 20px;
+  top : -5px;
+
+}

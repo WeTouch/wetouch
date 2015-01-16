@@ -3,6 +3,7 @@
 
 if (isset($_SESSION['match']))
 {
+
   if($_SESSION['match']==1)
   { ?>
     <script type="text/javascript">
@@ -11,7 +12,7 @@ if (isset($_SESSION['match']))
     });
     </script>
     <?php
-    $_SESSION['match']==0;
+    $_SESSION['match']=0;
   }
 }
 ?>
