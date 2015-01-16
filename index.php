@@ -82,7 +82,7 @@ $app = new \Slim\Slim([
   })->name('logout');
 
 
-  
+
   $app->get('/signinError2',function() use ($app){
     $app->render('ErrorMail2.php');
     $app->render('signinOpen.php');
