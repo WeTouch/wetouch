@@ -14,10 +14,7 @@ $app = new \Slim\Slim([
   'templates.path' => 'view'
   ]);
 
-  if(!isset($_SESSION['notification']))
-  {
-    $_SESSION['notification']=0;
-  }
+
   // routes
   $app->get('/',function() use ($app){
     if(!isset($_SESSION['id']))
@@ -231,6 +228,7 @@ $app = new \Slim\Slim([
     $app->render('userProfil.php',array("tabUser" => $tabUserInformations,"tabUserMore" => $tabUserMoreInformations,"imgUser"=>$pictUser,"allMatch" => $match2));
 
   })->name('userProfil');
+  
   $lastTime=0;
   if (isset($_SESSION['id']))
   {

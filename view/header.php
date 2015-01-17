@@ -64,26 +64,26 @@
                   switch($count)
                   {
                     case 1 :
-                    echo "<img id=notifChat src='images/notif/1.png'/>";
+                    echo "<img id=notifChat src='images/notif/n1.png'/>";
                     break;
                     case 2 :
-                    echo "<img id=notifChat src='images/notif/2.png'/>";
+                    echo "<img id=notifChat src='images/notif/n2.png'/>";
                     break;
                     case 3 :
-                    echo "<img id=notifChat src='images/notif/3.png'/>";
+                    echo "<img id=notifChat src='images/notif/n3.png'/>";
                     break;
                     case 4 :
-                    echo "<img id=notifChat src='images/notif/4.png'/>";
+                    echo "<img id=notifChat src='images/notif/n4.png'/>";
                     break;
                   }
                 }
                 if($count >=5)
                 {
-                  echo "<img id=notifChat src='images/notif/5.png'/>";
+                  echo "<img id=notifChat src='images/notif/n5.png'/>";
                 }
               }
               ?>
-              </li>
+            </li>
             <li><a href="<?php echo $app->urlFor('logout');?>">log out</a></li>
 
           </ul>

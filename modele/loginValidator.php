@@ -21,6 +21,8 @@ class loginValidator {
         $_SESSION['name'] = $idrep['name'];
         $_SESSION['firstname'] = $idrep['firstname'];
         $_SESSION['path'] = $idrep['photo_id'];
+        $_SESSION['notification']=time();
+      
         return True;
       }
       else{

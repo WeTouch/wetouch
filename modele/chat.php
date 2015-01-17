@@ -34,7 +34,7 @@ class Chat{
   }
 
   public function lastMessage()
-{
+  {
     require 'class/bdd.php';
     $req = $cnx->prepare("SELECT datee FROM t_chat WHERE ReceiveId = :id ORDER BY datee DESC");
     $req->execute(array('id'=>$_SESSION['id']));
@@ -99,9 +99,9 @@ echo 'Envoyer le premier message! <form method="post" action="#">
 </form>';
 }
 $i++; */
-    }
-    return $TabFinal;
-  }
+}
+return $TabFinal;
+}
 }
 
 ?>

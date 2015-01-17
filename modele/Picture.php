@@ -1,6 +1,6 @@
-<?php 
-    
-    
+<?php
+
+
 class Picture {
   private $tabPath;
   public function __construct()
@@ -97,23 +97,23 @@ class Picture {
       $dossier = "images/" . $_SESSION['id'];
       if(!is_dir($dossier))
       {
-         mkdir($dossier);
+        mkdir($dossier);
       }
       $content_dir = 'images/' . $_SESSION['id'] . "/";
 
-      // dossier où sera déplacé le fichier 
-      $tmp_file = $_FILES['fichier']['tmp_name']; 
+      // dossier où sera déplacé le fichier
+      $tmp_file = $_FILES['fichier']['tmp_name'];
       if( !is_uploaded_file($tmp_file) )
       {
-          echo $_POST['upload'];
-          exit("Le fichier est introuvable");
+        echo $_POST['upload'];
+        exit("Le fichier est introuvable");
       }
 
       // on vérifie maintenant l'extension
       $type_file = $_FILES['fichier']['type'];
       if( !strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') && !strstr($type_file, 'png') )
       {
-          exit("Le fichier n'est pas une image");
+        exit("Le fichier n'est pas une image");
       }
       $sql2 = 'SELECT MAX(id) id FROM t_photo';
       $req2 = $cnx->prepare($sql2);
@@ -123,7 +123,7 @@ class Picture {
       $name_file = $max['id']+1 .'.jpg';
       if( !move_uploaded_file($tmp_file, $content_dir . $name_file) )
       {
-          exit("Impossible de copier le fichier dans $content_dir");
+        exit("Impossible de copier le fichier dans $content_dir");
       }
       if ($row_count == 0)
       {
@@ -132,14 +132,13 @@ class Picture {
         $req->execute(array('photoId'=>$_SESSION['id'] . "/" . $name_file,'id'=>$_SESSION['id']));
         $_SESSION['path']=$_SESSION['id'] . "/" . $name_file;
       }
-      $req = $cnx->prepare("INSERT INTO t_photo(path,id_membres) Values (:path,:id_membres)"); 
+      $req = $cnx->prepare("INSERT INTO t_photo(path,id_membres) Values (:path,:id_membres)");
       $reponse = $req->execute(array(
         'path' => $_SESSION['id'] . "/" . $name_file,
         'id_membres' => $_SESSION['id']
-        ));
+      ));
     }
   }
 }
-  
-?>
 
+?>

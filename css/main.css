@@ -1128,15 +1128,15 @@ ul.faq li > div h3 {
 
 .tindbtn
 {
-visibility : hidden;
-position : relative;
-top : -150px;
+  visibility : hidden;
+  position : relative;
+  top : -150px;
 
 }
 
 #people img
 {
-border : 1px solid black;
+  border : 1px solid black;
 }
 
 footer
@@ -1156,8 +1156,8 @@ footer
 {
   width : 500px;
 
-float : left;
-padding : 20px;
+  float : left;
+  padding : 20px;
 }
 
 #rightP
@@ -1180,7 +1180,7 @@ padding : 20px;
 
 #infoC
 {
-width : 100px;
+  width : 100px;
 }
 
 #contentPortofolio
@@ -1208,9 +1208,9 @@ background-color : green;
 
 /*.Chat
 {
-  width : 500px;
-  display: inline-block;
-  display: none;
+width : 500px;
+display: inline-block;
+display: none;
 }*/
 
 
@@ -1222,7 +1222,7 @@ background-color : green;
 
 /*.discussion
 {
-  display: inline-block;
+display: inline-block;
 }*/
 
 
@@ -1253,7 +1253,7 @@ background-color : green;
 #floatR
 {
 
- float: right;
+  float: right;
   /*display : none;*/
 }
 
@@ -1300,7 +1300,7 @@ background-color : green;
 {
   height : 20px;
   position : relative;
-  left : 20px;
+  left : 22px;
   top : -5px;
 
 }
