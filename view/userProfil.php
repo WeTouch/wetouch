@@ -1,5 +1,7 @@
 <?php
 $idpers =  $_GET['id'];
+if (!empty($this->data['allMatch']))
+{
 if (in_array($idpers, $this->data['allMatch']))
 {
 
@@ -91,6 +93,7 @@ if (in_array($idpers, $this->data['allMatch']))
                     $app->render("NoUser.php");
                   }
                 }
+              }
                 else
                 {
                   $app->render("NoUser.php");

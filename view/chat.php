@@ -10,7 +10,7 @@ foreach ($this->data['tabMsg'] as $perso => $zboub)
 	$pos = stripos($perso,"*");
 	$photo = stripos($perso,"~");
 	$idz = substr($perso,$pos+1,$photo);
-	$id = substr($idz,0,2);
+	$id = substr($idz,0,1);
 	$photo_id = substr($perso,$photo+1,strlen($perso));
 
 	echo "<div id='all'>
